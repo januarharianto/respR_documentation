@@ -1,6 +1,13 @@
 book_filename: "respR_documentation"
 delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
 output_dir: docs
+#rmd_files: [
+#  
+#  "index.Rmd", 
+#  "vignettes/01-welcome.rmd", 
+#  "vignettes/02-literature.rmd",
+#  "vignettes/03-method.rmd",
+#  "vignettes/04-application.rmd",
+#  "vignettes/05-summary.rmd",
+#  "vignettes/06-references.rmd",
+#  ]

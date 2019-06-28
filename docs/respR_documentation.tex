@@ -1,0 +1,342 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={respR},
+            pdfauthor={written by Januar Harianto and Nicholas Carey},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{respR}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{written by \textbf{Januar Harianto} and \textbf{Nicholas Carey}}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{booktabs}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter{Introduction}\label{introduction}
+
+The \texttt{respR} package provides a structural, reproducible workflow
+for the processing and analysis of respirometry data. While the focus of
+our package is on aquatic respirometry, \texttt{respR} is largely
+unitless, and so can process linear relationships in any time-series
+data.
+
+Most importantly, \texttt{respR} uses peer-reviewed methods for all of
+its analyses, which means that all methods are well grounded in the
+literature. View our acknowledgements section to view a list of methods
+and their references.
+
+Use \texttt{respR} to:
+
+\begin{itemize}
+\tightlist
+\item
+  automatically import raw data from various oxygen sensing equipment;
+\item
+  rapidly test data for issues before analysis;
+\item
+  explore and visualise timeseries data;
+\item
+  calculate linear segments of data manually or automatically;
+\item
+  convert units of oxygen consumption; and
+\item
+  export results quickly for reporting.
+\end{itemize}
+
+The goal of this guide is to walk you through the \texttt{respR} package
+to import, analyse and convert your data. Before we begin, you will need
+to \protect\hyperlink{installation}{install the package}.
+
+\hypertarget{installation}{\chapter{Installation}\label{installation}}
+
+We are finalising our plans to publish \texttt{respR} on CRAN. For now,
+use the \texttt{devtools} package to install a stable version of the
+package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# install devtools}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\CommentTok{# use devtools to install respR from GitHub}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"januarharianto/respR"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Next, load the \texttt{respR} package into your workspace:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(respR)}
+\end{Highlighting}
+\end{Shaded}
+
+If you are using \texttt{respR} to analyse respirometry data for the
+first time, check out our ``Getting Started'' guide. Otherwise, use the
+Table of Contents to navigate your way to any topic of interest.
+
+\chapter{Getting Started}\label{getting-started}
+
+\section{Aquatic Respirometry}\label{aquatic-respirometry}
+
+There are four broad methodological approaches in aquatic respirometry:
+\emph{closed-chamber}, \emph{intermittent-flow}, \emph{flow-through} and
+\emph{open-tank}.
+
+In \textbf{closed-chamber} respirometry, \(O_2\) decrease is measured
+within a hermetically sealed chamber of known volume, sometimes set
+within a closed loop to allow mixing of the environment within the
+chamber. Oxygen recordings may be continuous through use of an oxygen
+probe, periodic through withdrawing water or gas samples at set
+intervals, or a two-point measurement consisting of the initial and
+final concentrations. Metabolic rates are estimated from the \(O_2\)
+timeseries by assuming a linear relationship between variables, and
+estimates of metabolic rate are straightforward in constant volume
+respirometry using the equation: \[VO_2 = \dot O_2V\] where \(\dot O_2\)
+is the slope of the regression that describes the rate of change in
+\(O_2\) concentration over time, or in the case of a two-point
+measurement, the difference in \(O_2\) concentration divided by time
+elapsed, and \(V\) is the volume of fluid in the container (Lighton
+2008).
+
+In \textbf{intermittent-flow} respirometry, \(O_2\) concentration is
+measured as described above, but periodically the chamber is flushed
+with new water or air, returning it to initial conditions, resealed, and
+the experiment repeated (Svendsen et al. 2016). This technique is
+essentially the same as closed respirometry, but with the ability to
+conduct replicates easily. Depending on the metabolic rate metric being
+investigated, final respiration rate can be calculated as the mean of
+the measures (e.g.~Carey et al. 2016), or the lowest or highest rates
+recorded in any trial (e.g.~Stoffels 2015).
+
+\textbf{Flow-through} respirometry involves a closed chamber, but with a
+regulated flow of air or water through it at a precisely determined
+rate. After equilibrium has been achieved, the oxygen concentration
+differential between the incurrent and excurrent channels, along with
+the flow rate, allows calculation of the oxygen extracted from the flow
+volume per unit time: \[\dot{V}O_2 = (C_iO_2 - C_eO_2)FR\] where
+\(\dot{V}O_2\) is the rate of \(O_2\) consumption over time, \(C_iO_2\)
+and \(C_eO_2\) are the incurrent and excurrent \(O_2\) concentrations,
+and \(FR\) is the flow rate through the system (Lighton 2008).
+
+A final method is \textbf{open-tank} respirometry, in which a tank or
+semi-enclosed area open to the atmosphere is used, but the input or
+mixing rate of oxygen from the surroundings has been quantified or found
+to be negligible relative to oxygen consumption of the specimens
+(Leclercq et al. 1999). It is seldom used, but for some applications it
+is a sufficient and practical methodology (Gamble et al. 2014). The
+common equation used for open respirometry is:
+\[\dot{V}O_2 = \dot O_2V + \phi_d\] where \(\dot O_2V\) is the slope of
+the regression that relates \(O_2\) concentration to time, \(V\) is the
+volume of the arena and \(\phi_d\) is the oxygen flux as determined by
+Fick's Law (Leclercq et al. 1999).
+
+\section{\texorpdfstring{The \texttt{respR} R
+package}{The respR R package}}\label{the-respr-r-package}
+
+\texttt{respR} is a package designed to process the data from all of
+these types of respirometry experiment. It is designed primarily for
+aquatic respirometry, although because many of the main functions are
+unitless it is adaptable for use with gaseous respirometry, and indeed
+analysis of other data where a parameter may change over time.
+
+When working with respirometry data, you will often need to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ensure that the data, or at least a \textbf{subset} of the data, is
+  representative of the research question of interest.
+\item
+  Perform an initial analysis of the data to \textbf{estimate} the rate
+  of change in oxygen concentration or amount.
+\item
+  Depending on the experimental setup, \textbf{correct} for background
+  usage of oxygen by micro-organisms, or correct for oxygen flux from
+  the air.
+\item
+  \textbf{Convert} the resulting usage rate to the volumetric and
+  mass-specific rates in the appropriate units.
+\end{enumerate}
+
+The \texttt{respR} package allows determination of common respirometry
+metrics and contains several functions to make this process
+straightforward.
+
+\begin{itemize}
+\tightlist
+\item
+  It provides visual feedback and diagnostic plots to help you explore,
+  subset and analyse your data.
+\item
+  It uses computational techniques such as \emph{rolling regressions}
+  and \emph{kernel density estimates} to determine \textbf{maximum},
+  \textbf{minimum} or \textbf{most linear} rates within time-series
+  data.
+\item
+  The package takes an object-oriented approach, with all functions
+  outputting objects which can be read by subsequent functions.
+\item
+  By separating the workflow into a series of connected functions, you
+  can ``mix and match'' functions to help you achieve your result.
+\item
+  Output objects can also be saved or exported, and contain all raw
+  data, parameters used in calculations, and results, allowing for a
+  fully documented and reproducibile analysis of respirometry data.
+\end{itemize}
+
+\section{Example Data}\label{example-data}
+
+We have provided example data that can be used immediately once
+\texttt{respR} is loaded (\texttt{urchins.rd()},
+\texttt{intermittent.rd()}, \texttt{zeb\_intermittent.rd()},
+\texttt{sardine.rd()}, \texttt{squid.rd()}, \texttt{flowthrough.rd()}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(}\DataTypeTok{package =} \StringTok{"respR"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{Methods}\label{methods}
+
+We describe our methods in this chapter.
+
+\chapter{Applications}\label{applications}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\section{Example one}\label{example-one}
+
+\section{Example two}\label{example-two}
+
+\chapter{Final Words}\label{final-words}
+
+We have finished a nice book.
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}
