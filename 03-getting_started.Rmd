@@ -1,0 +1,19 @@
+# Quick start
+
+`respR` has been designed to be simple to use, even for novice R users. Here we show you some examples of how data is analysed using various functions of the package.
+
+## Example data
+
+Example data are available when `respR` is loaded: `urchins.rd()`, `intermittent.rd()`, `zeb_intermittent.rd()`, `sardine.rd()`, `squid.rd()`,  `flowthrough.rd()`. Because lazy loading is implemented, the data can be called immediately. To view the list of available datasets and their descriptions, run the code: 
+
+```{r, eval=FALSE}
+data(package = "respR")
+```
+
+## Demonstration
+
+Let's analyse a relatively complex dataset quickly using `respR`.
+
+
+
+

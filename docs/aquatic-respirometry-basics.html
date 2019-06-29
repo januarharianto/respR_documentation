@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Aquatic respirometry basics | respR</title>
+  <meta name="description" content="Documentation for the R package, respR." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Aquatic respirometry basics | respR" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Aquatic respirometry basics | respR" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="written by Januar Harianto and Nicholas Carey" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="getting-started.html">
+<link rel="next" href="examples.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="why-use-respr.html"><a href="why-use-respr.html"><i class="fa fa-check"></i><b>2</b> Why use <code>respR</code>?</a></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a></li>
+<li class="chapter" data-level="4" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>4</b> Getting started</a><ul>
+<li class="chapter" data-level="4.1" data-path="getting-started.html"><a href="getting-started.html#example-data"><i class="fa fa-check"></i><b>4.1</b> Example Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="aquatic-respirometry-basics.html"><a href="aquatic-respirometry-basics.html"><i class="fa fa-check"></i><b>5</b> Aquatic respirometry basics</a><ul>
+<li class="chapter" data-level="5.1" data-path="aquatic-respirometry-basics.html"><a href="aquatic-respirometry-basics.html#closed-chamber"><i class="fa fa-check"></i><b>5.1</b> Closed-chamber</a></li>
+<li class="chapter" data-level="5.2" data-path="aquatic-respirometry-basics.html"><a href="aquatic-respirometry-basics.html#intermittent"><i class="fa fa-check"></i><b>5.2</b> Intermittent</a></li>
+<li class="chapter" data-level="5.3" data-path="aquatic-respirometry-basics.html"><a href="aquatic-respirometry-basics.html#flow-through"><i class="fa fa-check"></i><b>5.3</b> Flow-through</a></li>
+<li class="chapter" data-level="5.4" data-path="aquatic-respirometry-basics.html"><a href="aquatic-respirometry-basics.html#open-tank"><i class="fa fa-check"></i><b>5.4</b> Open-tank</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>6</b> Examples</a><ul>
+<li class="chapter" data-level="6.1" data-path="examples.html"><a href="examples.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="examples.html"><a href="examples.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="aquatic-respirometry-basics" class="section level1">
+<h1><span class="header-section-number">5</span> Aquatic respirometry basics</h1>
+<p>There are four broad methodological approaches in aquatic respirometry: <em>closed-chamber</em>, <em>intermittent-flow</em>, <em>flow-through</em> and <em>open-tank</em>.</p>
+<div id="closed-chamber" class="section level2">
+<h2><span class="header-section-number">5.1</span> Closed-chamber</h2>
+<blockquote>
+<ul>
+<li>Use <code>calc_rate()</code> and <code>auto_rate()</code> to measure closed-chamber respirometry.</li>
+</ul>
+</blockquote>
+<p>In <strong>closed-chamber</strong> respirometry, <span class="math inline">\(O_2\)</span> decrease is measured within a hermetically sealed chamber of known volume, sometimes set within a closed loop to allow mixing of the environment within the chamber. Oxygen recordings may be continuous through use of an oxygen probe, periodic through withdrawing water or gas samples at set intervals, or a two-point measurement consisting of the initial and final concentrations. Metabolic rates are estimated from the <span class="math inline">\(O_2\)</span> timeseries by assuming a linear relationship between variables, and estimates of metabolic rate are straightforward in constant volume respirometry using the equation: <span class="math display">\[VO_2 = \dot O_2V\]</span> where <span class="math inline">\(\dot O_2\)</span> is the slope of the regression that describes the rate of change in <span class="math inline">\(O_2\)</span> concentration over time, or in the case of a two-point measurement, the difference in <span class="math inline">\(O_2\)</span> concentration divided by time elapsed, and <span class="math inline">\(V\)</span> is the volume of fluid in the container (Lighton 2008).</p>
+</div>
+<div id="intermittent" class="section level2">
+<h2><span class="header-section-number">5.2</span> Intermittent</h2>
+<blockquote>
+<ul>
+<li>Use <code>calc_rate()</code> to manually measure intermittent respirometry.</li>
+<li>Use <code>auto_rate()</code> if segments are manually identified prior to running the analysis.</li>
+</ul>
+</blockquote>
+<p>In <strong>intermittent-flow</strong> respirometry, <span class="math inline">\(O_2\)</span> concentration is measured as described above, but periodically the chamber is flushed with new water or air, returning it to initial conditions, resealed, and the experiment repeated (Svendsen et al. 2016). This technique is essentially the same as closed respirometry, but with the ability to conduct replicates easily. Depending on the metabolic rate metric being investigated, final respiration rate can be calculated as the mean of the measures (e.g. Carey et al. 2016), or the lowest or highest rates recorded in any trial (e.g. Stoffels 2015).</p>
+</div>
+<div id="flow-through" class="section level2">
+<h2><span class="header-section-number">5.3</span> Flow-through</h2>
+<blockquote>
+<ul>
+<li>Use <code>calc_rate.ft()</code> to measure flow-through respirometry.</li>
+</ul>
+</blockquote>
+<p><strong>Flow-through</strong> respirometry involves a closed chamber, but with a regulated flow of air or water through it at a precisely determined rate. After equilibrium has been achieved, the oxygen concentration differential between the incurrent and excurrent channels, along with the flow rate, allows calculation of the oxygen extracted from the flow volume per unit time: <span class="math display">\[\dot{V}O_2 = (C_iO_2 - C_eO_2)FR\]</span> where <span class="math inline">\(\dot{V}O_2\)</span> is the rate of <span class="math inline">\(O_2\)</span> consumption over time, <span class="math inline">\(C_iO_2\)</span> and <span class="math inline">\(C_eO_2\)</span> are the incurrent and excurrent <span class="math inline">\(O_2\)</span> concentrations, and <span class="math inline">\(FR\)</span> is the flow rate through the system (Lighton 2008).</p>
+</div>
+<div id="open-tank" class="section level2">
+<h2><span class="header-section-number">5.4</span> Open-tank</h2>
+<blockquote>
+<ul>
+<li>Use <code>calc.rate()</code> and <code>auto_rate()</code> to measure open-tank respirometry, and then use <code>adjust_rate()</code> to include oxygen flux adjustments.</li>
+</ul>
+</blockquote>
+<p>A final method is <strong>open-tank</strong> respirometry, in which a tank or semi-enclosed area open to the atmosphere is used, but the input or mixing rate of oxygen from the surroundings has been quantified or found to be negligible relative to oxygen consumption of the specimens (Leclercq et al. 1999). It is seldom used, but for some applications it is a sufficient and practical methodology (Gamble et al. 2014). The common equation used for open respirometry is: <span class="math display">\[\dot{V}O_2 = \dot O_2V + \phi_d\]</span> where <span class="math inline">\(\dot O_2V\)</span> is the slope of the regression that relates <span class="math inline">\(O_2\)</span> concentration to time, <span class="math inline">\(V\)</span> is the volume of the arena and <span class="math inline">\(\phi_d\)</span> is the oxygen flux as determined by Fick’s Law (Leclercq et al. 1999).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="examples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

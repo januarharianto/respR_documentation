@@ -1,6 +1,6 @@
 --- 
-title: "respR"
-author: "written by **Januar Harianto** and **Nicholas Carey**"
+title: "respR -- R Package Documentation"
+author: "**Januar Harianto** and **Nicholas Carey**"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -18,9 +18,7 @@ knitr::write_bib(c(
 
 # Introduction
 
-The `respR` package provides a structural, reproducible workflow for the processing and analysis of respirometry data. While the focus of our package is on aquatic respirometry, `respR` is largely unitless, and so can process linear relationships in any time-series data. 
-
-Most importantly, `respR` uses peer-reviewed methods for all of its analyses, which means that all methods are well grounded in the literature. View our acknowledgements section to view a list of methods and their references.
+The R package `respR` provides a structural, reproducible workflow for the processing and analysis of respirometry data. Although the focus of the package is on aquatic respirometry, `respR` is largely unitless, and so can process linear relationships in any time-series data. All analytical methods used are peer-reviewed and rigorously tested.
 
 Use `respR` to:
 

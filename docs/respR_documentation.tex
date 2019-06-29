@@ -23,8 +23,8 @@
 }{}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={respR},
-            pdfauthor={written by Januar Harianto and Nicholas Carey},
+            pdftitle={respR -- R Package Documentation},
+            pdfauthor={Januar Harianto and Nicholas Carey},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -116,10 +116,10 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{respR}
+  \title{respR -- R Package Documentation}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-    \author{written by \textbf{Januar Harianto} and \textbf{Nicholas Carey}}
+    \author{\textbf{Januar Harianto} and \textbf{Nicholas Carey}}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
     \date{}
@@ -136,16 +136,12 @@
 }
 \chapter{Introduction}\label{introduction}
 
-The \texttt{respR} package provides a structural, reproducible workflow
-for the processing and analysis of respirometry data. While the focus of
-our package is on aquatic respirometry, \texttt{respR} is largely
-unitless, and so can process linear relationships in any time-series
-data.
-
-Most importantly, \texttt{respR} uses peer-reviewed methods for all of
-its analyses, which means that all methods are well grounded in the
-literature. View our acknowledgements section to view a list of methods
-and their references.
+The R package \texttt{respR} provides a structural, reproducible
+workflow for the processing and analysis of respirometry data. Although
+the focus of the package is on aquatic respirometry, \texttt{respR} is
+largely unitless, and so can process linear relationships in any
+time-series data. All analytical methods used are peer-reviewed and
+rigorously tested.
 
 Use \texttt{respR} to:
 
@@ -169,11 +165,149 @@ The goal of this guide is to walk you through the \texttt{respR} package
 to import, analyse and convert your data. Before we begin, you will need
 to \protect\hyperlink{installation}{install the package}.
 
+\chapter{\texorpdfstring{Why use
+\texttt{respR}?}{Why use respR?}}\label{why-use-respr}
+
+We have designed \texttt{respR} to be able to explore, process and
+analyse \emph{any and all} aquatic respirometry data, independent of the
+system used to collect it or type of experiment. Because of the unitless
+nature of the majority of functions in the package, other respirometry
+data (e.g.~aerobic), or other time series data examining other variables
+can be explored and analysed in \texttt{respR}.
+
+The use of simple data structures (numeric vector and data frames) means
+there should be a low barrier to entry for anyone not completely new to
+R. The unitless nature of the data (requiring only paired values of
+numeric time-elapsed, and an oxygen amount in any unit) greatly reduces
+the inputs each function requires, and simplifies any analysis using
+\texttt{respR} in comparison to other packages (see
+\href{https://januarharianto.github.io/respR/articles/packages_comp.html}{A
+comparison of respR with other R packages}). Once the user has imported
+and prepared their data to this form (see
+\href{https://januarharianto.github.io/respR/articles/importing.html}{Importing
+your data}), data analysis using respR is simple and intuitive.
+
+\section{Other R respirometry
+packages}\label{other-r-respirometry-packages}
+
+Both \href{https://cran.r-project.org/web/packages/rMR/index.html}{rMR}
+and \href{https://fishresp.org}{FishResp} centre around processing
+intermittent-flow, swim tunnel respirometry data with multiple,
+regularly-spaced replicates, particularly from Loligo Systems equipment.
+If this does not describe your experiment there is little point in
+considering these packages, as analysis of other respirometry
+experiments in them is challenging, if not impossible.
+
+\texttt{respR} is more than capable of processing these intermittent
+flow experiments with a little forethought and data organisation
+(\href{https://januarharianto.github.io/respR/articles/intermittent2.html}{see
+here}), and support for this will get better in the coming months.
+However, we would encourage users to explore these other packages and
+how they work; they are useful options and may contain functionality
+that suits your particular analyses or workflows better than
+\texttt{respR}.
+
+\section{Linear detection}\label{linear-detection}
+
+Importantly, the packages mentioned above only allow manual selection of
+data regions over which to determine rates, such as over a specified
+time period. This is perfectly acceptable for many analyses, and
+\texttt{respR} has this functionality (although in a much more flexible
+implementation), but \texttt{respR} also has the \texttt{auto\_rate()}
+function which identifies linear regions of respirometry data.
+
+This powerful function allows identification of \emph{most linear,
+minimum and maximum} rates in an \textbf{independent, objective, and
+statistically robust manner}. We would encourage the respirometry
+community to explore this objective method rather than rely on manual
+selection, which can leave investigators open to accusations of cherry
+picking and bias when reporting metabolic rates.
+
+Another R package, \texttt{LoLinR}, can identify linear sections in time
+series data, athough using a fundamentally different method than
+\texttt{auto\_rate()}. However, \texttt{LoLinR} is extremely
+computationally inefficient, taking literally hours to days to process
+typical respirometry datasets. It does appear to perform well, even
+after subsampling longer data to the shorter lengths the function can
+handle, but \texttt{auto\_rate}appears to perform equally well and can
+process these data in seconds without modification (see
+\href{https://januarharianto.github.io/respR/articles/auto_rate_comp.html}{here}).
+
+\section{Reproducibility}\label{reproducibility}
+
+Our other main objective with \texttt{respR} was to provide a solution
+for reporting analyses of respirometry data in an easily reproducible
+form. See
+\href{https://januarharianto.github.io/respR/articles/reproducibility.html}{Open
+science and reproducibility using respR} for an example, but in summary,
+an entire \texttt{respR} analysis can be reported in only a few lines of
+code. Our careful selection of descriptive function names and input
+operators allow - we hope - this code to be readable and convey easy
+understanding about what is being done in the analysis, even without
+additional comments. Inclusion of a raw data file with this code would
+allow anyone to reproduce it easily, and scrutinise each stage. We hope
+this makes the job of investigators, reviewers and editors easier.
+
+\section{Using other similar R
+packages}\label{using-other-similar-r-packages}
+
+We see only a few scenarios in which other R packages might be
+considered for analysing respirometry data:
+
+\begin{itemize}
+\item
+  \texttt{LoLinR} - If your data is shorter than around 500 datapoints,
+  and you would like to use a different linear detection method other
+  than \texttt{auto\_rate} in \texttt{respR}, \texttt{LoLinR} can
+  achieve this. Note however, this package is not respirometry focussed.
+  You would still need to utilise \texttt{respR} or other solutions to
+  format and import respirometry data, apply background corrections, and
+  convert the resulting slopes to particular units. If your data are
+  longer than around 400-500 in length, \texttt{LoLinR} is not a
+  practical option because of the time needed to process the data.
+\item
+  \texttt{rMR}/\texttt{FishResp} - If you are doing intermittent-flow,
+  swim tunnel experiments with regularly spaced replicates (particularly
+  using Loligo Systems equipment) these are good options for analysising
+  your data. These data are also able to be analysed in \texttt{respR}
+  however: see
+  \href{https://januarharianto.github.io/respR/articles/intermittent2.html}{link}.
+\item
+  Gas/Air respirometry - We don't know of any options in R to analyse
+  air respirometry experiments, and at present \texttt{respR} is chiefly
+  designed to analyse aquatic respirometry data. However, the great
+  majority of the exploratory and analytical functions are unit
+  agnostic. The only step requiring units is conversion of slopes to
+  rates in the function \texttt{convert\_rate()}. While we have not done
+  this, we imagine air respirometry data could easily be explored and
+  rates determined, and most experienced investigators in air
+  respirometry would be able to convert these to units themselves. We
+  plan to add this support, but as aquatic biologists we have no
+  experience with these data. Please get in
+  \href{mailto:nicholascarey@gmail.com}{touch} if you can help with
+  this.
+\end{itemize}
+
+\section{\texorpdfstring{Using
+\texttt{respR}}{Using respR}}\label{using-respr}
+
+In our opinion, you should use \texttt{respR} for most of your aquatic
+respirometry data.
+
+We have built \texttt{respR} to accept any and all types of experiment
+or data source easily. We have not processed every data format or
+variation of experiment, and there may be circumstances we have not
+anticipated. So, if for whatever reason some part of \texttt{respR} does
+not work for you please do \href{mailto:nicholascarey@gmail.com}{let us
+know}, and we will work to accommodate it.
+
+\part*{USAGE}\label{part-usage}
+\addcontentsline{toc}{part}{USAGE}
+
 \hypertarget{installation}{\chapter{Installation}\label{installation}}
 
-We are finalising our plans to publish \texttt{respR} on CRAN. For now,
-use the \texttt{devtools} package to install a stable version of the
-package:
+Use the \texttt{devtools} package to install a stable version of
+\texttt{respR}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -181,6 +315,18 @@ package:
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
 \CommentTok{# use devtools to install respR from GitHub}
 \NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"januarharianto/respR"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The developmental version is mostly stable, but contains bleeding-edge
+improvements. Do not use it unless you need new functionality that is
+still being tested in this branch. You can install the package using the
+code below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# install dev version}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"januarharianto/respR"}\NormalTok{, }\DataTypeTok{ref =} \StringTok{"develop"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -192,17 +338,53 @@ Next, load the \texttt{respR} package into your workspace:
 \end{Highlighting}
 \end{Shaded}
 
-If you are using \texttt{respR} to analyse respirometry data for the
-first time, check out our ``Getting Started'' guide. Otherwise, use the
-Table of Contents to navigate your way to any topic of interest.
+Check out our \protect\hyperlink{quick-start}{Quick start} guide if you
+are using \texttt{respR} for the first time.
 
-\chapter{Getting Started}\label{getting-started}
+\hypertarget{quick-start}{\chapter{Quick start}\label{quick-start}}
 
-\section{Aquatic Respirometry}\label{aquatic-respirometry}
+\texttt{respR} has been designed to be simple to use, even for novice R
+users. Here we show you some examples of how data is analysed using
+various functions of the package.
+
+\section{Example data}\label{example-data}
+
+Example data are available when \texttt{respR} is loaded:
+\texttt{urchins.rd()}, \texttt{intermittent.rd()},
+\texttt{zeb\_intermittent.rd()}, \texttt{sardine.rd()},
+\texttt{squid.rd()}, \texttt{flowthrough.rd()}. Because lazy loading is
+implemented, the data can be called immediately. To view the list of
+available datasets and their descriptions, run the code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(}\DataTypeTok{package =} \StringTok{"respR"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Demonstration}\label{demonstration}
+
+Let's analyse a relatively complex dataset quickly using \texttt{respR}.
+
+\part*{METHODS}\label{part-methods}
+\addcontentsline{toc}{part}{METHODS}
+
+\chapter{Aquatic respirometry}\label{aquatic-respirometry}
 
 There are four broad methodological approaches in aquatic respirometry:
 \emph{closed-chamber}, \emph{intermittent-flow}, \emph{flow-through} and
 \emph{open-tank}.
+
+\section{Closed-chamber}\label{closed-chamber}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{calc\_rate()} and \texttt{auto\_rate()} to measure
+  closed-chamber respirometry.
+\end{itemize}
+\end{quote}
 
 In \textbf{closed-chamber} respirometry, \(O_2\) decrease is measured
 within a hermetically sealed chamber of known volume, sometimes set
@@ -220,6 +402,20 @@ measurement, the difference in \(O_2\) concentration divided by time
 elapsed, and \(V\) is the volume of fluid in the container (Lighton
 2008).
 
+\section{Intermittent}\label{intermittent}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{calc\_rate()} to manually measure intermittent
+  respirometry.
+\item
+  Use \texttt{auto\_rate()} if segments are manually identified prior to
+  running the analysis.
+\end{itemize}
+\end{quote}
+
 In \textbf{intermittent-flow} respirometry, \(O_2\) concentration is
 measured as described above, but periodically the chamber is flushed
 with new water or air, returning it to initial conditions, resealed, and
@@ -230,6 +426,16 @@ investigated, final respiration rate can be calculated as the mean of
 the measures (e.g.~Carey et al. 2016), or the lowest or highest rates
 recorded in any trial (e.g.~Stoffels 2015).
 
+\section{Flow-through}\label{flow-through}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{calc\_rate.ft()} to measure flow-through respirometry.
+\end{itemize}
+\end{quote}
+
 \textbf{Flow-through} respirometry involves a closed chamber, but with a
 regulated flow of air or water through it at a precisely determined
 rate. After equilibrium has been achieved, the oxygen concentration
@@ -239,6 +445,18 @@ volume per unit time: \[\dot{V}O_2 = (C_iO_2 - C_eO_2)FR\] where
 \(\dot{V}O_2\) is the rate of \(O_2\) consumption over time, \(C_iO_2\)
 and \(C_eO_2\) are the incurrent and excurrent \(O_2\) concentrations,
 and \(FR\) is the flow rate through the system (Lighton 2008).
+
+\section{Open-tank}\label{open-tank}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{calc.rate()} and \texttt{auto\_rate()} to measure
+  open-tank respirometry, and then use \texttt{adjust\_rate()} to
+  include oxygen flux adjustments.
+\end{itemize}
+\end{quote}
 
 A final method is \textbf{open-tank} respirometry, in which a tank or
 semi-enclosed area open to the atmosphere is used, but the input or
@@ -252,79 +470,10 @@ the regression that relates \(O_2\) concentration to time, \(V\) is the
 volume of the arena and \(\phi_d\) is the oxygen flux as determined by
 Fick's Law (Leclercq et al. 1999).
 
-\section{\texorpdfstring{The \texttt{respR} R
-package}{The respR R package}}\label{the-respr-r-package}
+\part*{EXAMPLES}\label{part-examples}
+\addcontentsline{toc}{part}{EXAMPLES}
 
-\texttt{respR} is a package designed to process the data from all of
-these types of respirometry experiment. It is designed primarily for
-aquatic respirometry, although because many of the main functions are
-unitless it is adaptable for use with gaseous respirometry, and indeed
-analysis of other data where a parameter may change over time.
-
-When working with respirometry data, you will often need to:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Ensure that the data, or at least a \textbf{subset} of the data, is
-  representative of the research question of interest.
-\item
-  Perform an initial analysis of the data to \textbf{estimate} the rate
-  of change in oxygen concentration or amount.
-\item
-  Depending on the experimental setup, \textbf{correct} for background
-  usage of oxygen by micro-organisms, or correct for oxygen flux from
-  the air.
-\item
-  \textbf{Convert} the resulting usage rate to the volumetric and
-  mass-specific rates in the appropriate units.
-\end{enumerate}
-
-The \texttt{respR} package allows determination of common respirometry
-metrics and contains several functions to make this process
-straightforward.
-
-\begin{itemize}
-\tightlist
-\item
-  It provides visual feedback and diagnostic plots to help you explore,
-  subset and analyse your data.
-\item
-  It uses computational techniques such as \emph{rolling regressions}
-  and \emph{kernel density estimates} to determine \textbf{maximum},
-  \textbf{minimum} or \textbf{most linear} rates within time-series
-  data.
-\item
-  The package takes an object-oriented approach, with all functions
-  outputting objects which can be read by subsequent functions.
-\item
-  By separating the workflow into a series of connected functions, you
-  can ``mix and match'' functions to help you achieve your result.
-\item
-  Output objects can also be saved or exported, and contain all raw
-  data, parameters used in calculations, and results, allowing for a
-  fully documented and reproducibile analysis of respirometry data.
-\end{itemize}
-
-\section{Example Data}\label{example-data}
-
-We have provided example data that can be used immediately once
-\texttt{respR} is loaded (\texttt{urchins.rd()},
-\texttt{intermittent.rd()}, \texttt{zeb\_intermittent.rd()},
-\texttt{sardine.rd()}, \texttt{squid.rd()}, \texttt{flowthrough.rd()}).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{data}\NormalTok{(}\DataTypeTok{package =} \StringTok{"respR"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\chapter{Methods}\label{methods}
-
-We describe our methods in this chapter.
-
-\chapter{Applications}\label{applications}
+\chapter{Intermittent respirometry}\label{intermittent-respirometry}
 
 Some \emph{significant} applications are demonstrated in this chapter.
 
@@ -332,9 +481,10 @@ Some \emph{significant} applications are demonstrated in this chapter.
 
 \section{Example two}\label{example-two}
 
-\chapter{Final Words}\label{final-words}
+\part*{ARTICLES}\label{part-articles}
+\addcontentsline{toc}{part}{ARTICLES}
 
-We have finished a nice book.
+\chapter{Articles}\label{articles}
 
 \bibliography{book.bib,packages.bib}
 
