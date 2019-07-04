@@ -16,19 +16,27 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
+
+
 # Introduction
 
-The R package `respR` provides a structural, reproducible workflow for the processing and analysis of respirometry data. Although the focus of the package is on aquatic respirometry, `respR` is largely unitless, and so can process linear relationships in any time-series data. All analytical methods used are peer-reviewed and rigorously tested.
+<!-- *Note: we are in the process of migrating and re-writing the documentation for respR. We apologise for the mess while we integrate our vignettes into this document.* -->
+
+<!-- ----- -->
+
+The R package `respR` provides a structural, reproducible workflow for the processing and analysis of respirometry data. Although the focus of the package is on aquatic respirometry, Functions in `respR` are largely unitless and can be used for the analysis of linear relationships in any time-series data. All analytical methods used in the package have been peer-reviewed and rigorously tested.
 
 Use `respR` to:
 
-- automatically import raw data from various oxygen sensing equipment;
-- rapidly test data for issues before analysis;
-- explore and visualise timeseries data;
-- calculate linear segments of data manually or automatically;
-- convert units of oxygen consumption; and
-- export results quickly for reporting.
+- automatically **import** raw data from various oxygen sensing equipment;
+- rapidly **test** data for issues before analysis;
+- **explore** and visualise timeseries data;
+- perform **regression** statistics on linear segments of data manually or automatically;
+- **convert** units of oxygen consumption; and
+- **export** results quickly for reporting.
 
  
 
-The goal of this guide is to walk you through the `respR` package to import, analyse and convert your data. Before we begin, you will need to [install the package][installation].
+The goal of this guide is to walk you through the `respR` package to import, analyse and convert your data. To begin, you will need to [install the package][installation].
+
+
