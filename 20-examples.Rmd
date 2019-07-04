@@ -1,9 +1,27 @@
-# (PART\*) EXAMPLES {-} 
+<!-- # (PART\*) EXAMPLES {-}  -->
 
-# Intermittent respirometry
 
-Some _significant_ applications are demonstrated in this chapter.
+<!-- ```{r echo=FALSE, message=FALSE} -->
 
-## Example one
+<!-- library(respR) -->
 
-## Example two
+<!-- ``` -->
+
+
+<!-- # Import data -->
+
+<!-- The `import_file()` function uses pattern recognititon to automatically recognise, clean and format file outputs from many commercially-availabe oxygen sensors. Currently supported systems include: -->
+
+<!-- - Pyroscience Firesting ([pro](https://www.pyroscience.com/firesting-pro-optical-meter.html), [O2](https://www.pyroscience.com/optical_oxygen_meter_firesting_O2.html), [GO2](https://www.pyroscience.com/firestinggo2-pocket-oxygen-meter.html) and [O2-Mini](https://www.pyroscience.com/firestingo2-mini-optical-oxygen-meter-oem-module.html)), and [Pyro (software)](https://www.pyroscience.com/downloads.html),  -->
+<!-- - [PRESENS OXY10 mini](https://www.presens.de/products/detail/oxy-10-mini.html), PRESENS generic (micro, Microx, Fibox, OXY),  -->
+<!-- - [Aqualab MiniDOT](http://aqualab.com.au/product/pme/water-quality-sensors/minidot/),  -->
+<!-- - [Loligo Witrox 4](https://www.loligosystems.com/witrox-4-oxygen-meter-for-mini-sensors-4-x-o-1-x-temp), [Witrox 1](https://www.loligosystems.com/witrox-1-oxygen-meter-for-mini-sensors-1-x-o-1-x-temp), and  -->
+<!-- - [Vernier LabQuest](https://www.vernier.com/products/interfaces/labq2/). -->
+
+<!-- Users   -->
+
+<!-- ```{r, eval=FALSE} -->
+<!-- import_file("raw_output.txt") -->
+<!-- ``` -->
+
+<!-- Running the function does several things. -->
