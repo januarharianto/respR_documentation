@@ -6,3 +6,6 @@
 \.DS_Store
 
 \.texpadtmp/
+
+_book/
+_bookdown_files/
