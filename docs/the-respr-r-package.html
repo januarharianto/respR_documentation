@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 The respR R package | respR – R Package Documentation</title>
+  <meta name="description" content="Documentation for the R package, respR." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 The respR R package | respR – R Package Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 The respR R package | respR – R Package Documentation" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="Januar Harianto and Nicholas Carey" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intermittent-respirometry.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="why-use-respr.html"><a href="why-use-respr.html"><i class="fa fa-check"></i><b>2</b> Why use <code>respR</code>?</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-use-respr.html"><a href="why-use-respr.html#other-r-respirometry-packages"><i class="fa fa-check"></i><b>2.1</b> Other R respirometry packages</a></li>
+<li class="chapter" data-level="2.2" data-path="why-use-respr.html"><a href="why-use-respr.html#linear-detection"><i class="fa fa-check"></i><b>2.2</b> Linear detection</a></li>
+<li class="chapter" data-level="2.3" data-path="why-use-respr.html"><a href="why-use-respr.html#reproducibility"><i class="fa fa-check"></i><b>2.3</b> Reproducibility</a></li>
+<li class="chapter" data-level="2.4" data-path="why-use-respr.html"><a href="why-use-respr.html#using-other-similar-r-packages"><i class="fa fa-check"></i><b>2.4</b> Using other similar R packages</a></li>
+<li class="chapter" data-level="2.5" data-path="why-use-respr.html"><a href="why-use-respr.html#using-respr"><i class="fa fa-check"></i><b>2.5</b> Using <code>respR</code></a></li>
+</ul></li>
+<li class="part"><span><b>USAGE</b></span></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a></li>
+<li class="chapter" data-level="4" data-path="quick-start.html"><a href="quick-start.html"><i class="fa fa-check"></i><b>4</b> Quick start</a><ul>
+<li class="chapter" data-level="4.1" data-path="quick-start.html"><a href="quick-start.html#example-data"><i class="fa fa-check"></i><b>4.1</b> Example data</a></li>
+<li class="chapter" data-level="4.2" data-path="quick-start.html"><a href="quick-start.html#demonstration"><i class="fa fa-check"></i><b>4.2</b> Demonstration</a></li>
+</ul></li>
+<li class="part"><span><b>METHODS</b></span></li>
+<li class="chapter" data-level="5" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html"><i class="fa fa-check"></i><b>5</b> Aquatic respirometry</a><ul>
+<li class="chapter" data-level="5.1" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#closed-chamber"><i class="fa fa-check"></i><b>5.1</b> Closed-chamber</a></li>
+<li class="chapter" data-level="5.2" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#intermittent"><i class="fa fa-check"></i><b>5.2</b> Intermittent</a></li>
+<li class="chapter" data-level="5.3" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#flow-through"><i class="fa fa-check"></i><b>5.3</b> Flow-through</a></li>
+<li class="chapter" data-level="5.4" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#open-tank"><i class="fa fa-check"></i><b>5.4</b> Open-tank</a></li>
+</ul></li>
+<li class="part"><span><b>EXAMPLES</b></span></li>
+<li class="chapter" data-level="6" data-path="intermittent-respirometry.html"><a href="intermittent-respirometry.html"><i class="fa fa-check"></i><b>6</b> Intermittent respirometry</a><ul>
+<li class="chapter" data-level="6.1" data-path="intermittent-respirometry.html"><a href="intermittent-respirometry.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="intermittent-respirometry.html"><a href="intermittent-respirometry.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="part"><span><b>ARTICLES</b></span></li>
+<li class="chapter" data-level="7" data-path="the-respr-r-package.html"><a href="the-respr-r-package.html"><i class="fa fa-check"></i><b>7</b> The <code>respR</code> R package</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-respr-r-package.html"><a href="the-respr-r-package.html#example-data-1"><i class="fa fa-check"></i><b>7.1</b> Example Data</a></li>
+<li class="chapter" data-level="7.2" data-path="the-respr-r-package.html"><a href="the-respr-r-package.html#vignettes-and-documentation"><i class="fa fa-check"></i><b>7.2</b> Vignettes and documentation</a></li>
+<li class="chapter" data-level="7.3" data-path="the-respr-r-package.html"><a href="the-respr-r-package.html#references"><i class="fa fa-check"></i><b>7.3</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR – R Package Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-respr-r-package" class="section level1">
+<h1><span class="header-section-number">7</span> The <code>respR</code> R package</h1>
+<p><code>respR</code> is a package designed to process the data from all of these types of respirometry experiment. It is designed primarily for aquatic respirometry, although because many of the main functions are unitless it is adaptable for use with gaseous respirometry, and indeed analysis of other data where a parameter may change over time.</p>
+<p>When working with respirometry data, you will often need to:</p>
+<ol style="list-style-type: decimal">
+<li>Ensure that the data, or at least a <strong>subset</strong> of the data, is representative of the research question of interest.</li>
+<li>Perform an initial analysis of the data to <strong>estimate</strong> the rate of change in oxygen concentration or amount.</li>
+<li>Depending on the experimental setup, <strong>correct</strong> for background usage of oxygen by micro-organisms, or correct for oxygen flux from the air.</li>
+<li><strong>Convert</strong> the resulting usage rate to the volumetric and mass-specific rates in the appropriate units.</li>
+</ol>
+<p>The <code>respR</code> package allows determination of common respirometry metrics and contains several functions to make this process straightforward.</p>
+<ul>
+<li>It provides visual feedback and diagnostic plots to help you explore, subset and analyse your data.</li>
+<li>It uses computational techniques such as <em>rolling regressions</em> and <em>kernel density estimates</em> to determine <strong>maximum</strong>, <strong>minimum</strong> or <strong>most linear</strong> rates within time-series data.</li>
+<li>The package takes an object-oriented approach, with all functions outputting objects which can be read by subsequent functions.</li>
+<li>By separating the workflow into a series of connected functions, you can “mix and match” functions to help you achieve your result.</li>
+<li>Output objects can also be saved or exported, and contain all raw data, parameters used in calculations, and results, allowing for a fully documented and reproducibile analysis of respirometry data.</li>
+</ul>
+<div id="example-data-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Example Data</h2>
+<p>We have provided example data that can be used immediately once <code>respR</code> is loaded (<code>urchins.rd()</code>, <code>intermittent.rd()</code>, <code>zeb_intermittent.rd()</code>, <code>sardine.rd()</code>, <code>squid.rd()</code>, <code>flowthrough.rd()</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="dt">package =</span> <span class="st">&quot;respR&quot;</span>)</code></pre></div>
+<p>These data were obtained from actual experiments and more information can be obtained by invoking the <code>?</code> command in the R console, for instance, <code>?urchins.rd</code>.</p>
+</div>
+<div id="vignettes-and-documentation" class="section level2">
+<h2><span class="header-section-number">7.2</span> Vignettes and documentation</h2>
+<!-- As well as through invoking the `?` command in R, documentation for the functions in `respR` can be found in the [Reference](https://januarharianto.github.io/respR/reference/index.html) link at the top of this page.  -->
+<!-- In addition, we have prepared several vignettes describing typical analysis workflows found under **Articles**, or via these links: -->
+<p>We have prepared several vignettes describing typical analysis workflows and how <code>respR</code> works:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/importing.html">Importing your data</a></strong><br />
+<code>respR</code> has functions to make it easy to bring in and prepare your data, even from the raw data files output by various respirometry systems.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/closed.html">Closed-chamber respirometry</a></strong><br />
+This is a good place to start to understand the full functionality of <code>respR</code>. It describes an entire workflow to process and analyse a closed-chamber respirometry dataset.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/auto_rate.html">auto_rate: Automatic detection of metabolic rates</a></strong><br />
+Here we introduce the function <code>auto_rate()</code> for the automatic detection and estimation of <strong>maximum</strong>, <strong>minimum</strong> and <strong>most linear</strong> rates.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/performance.html">Performance of auto_rate in detecting linear regions</a></strong><br />
+We use simulated data to test the accuracy of <code>auto_rate()</code>, and discuss the function’s performance with focus on linear data detection.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/auto_rate_comp.html">Comparative performance of auto_rate and LoLinR</a></strong><br />
+We make comparisons to another R package, <code>LoLinR</code>, using data from their package and simulated data.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/intermittent.html">Intermittent-flow respirometry: Simple example</a></strong><br />
+<strong><a href="https://januarharianto.github.io/respR/articles/intermittent2.html">Intermittent-flow respirometry: Complex example</a></strong><br />
+How to analyse simple and more complex intermittent-flow respirometry experiments.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/flowthrough.html">Flowthrough respirometry</a></strong><br />
+Analysis of flowthrough respirometry data.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/pcrit.html">PCrit</a></strong><br />
+Determine P<sub>crit</sub> in long-term, closed chamber respirometry experiments.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/twopoint.html">Two-point analyses</a></strong><br />
+Determine oxygen use rate using only two datapoints.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/reproducibility.html">Reproducibility</a></strong><br />
+How <code>respR</code> has been designed to allow reporting of reproducible analyses.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/tidyverse.html">respR and the Tidyverse</a></strong><br />
+Information about how <code>respR</code> integrates with <code>tidyverse</code> practices to streamline analytic workflows.</p></li>
+<li><p><strong><a href="https://januarharianto.github.io/respR/articles/packages_comp.html">A comparison of respR with other R packages</a></strong><br />
+<strong><a href="https://januarharianto.github.io/respR/articles/usage.html">When to use respR</a></strong><br />
+The functionality and workflow of <code>respR</code> in comparison to other options, and when you should use it.</p></li>
+</ol>
+</div>
+<div id="references" class="section level2">
+<h2><span class="header-section-number">7.3</span> References</h2>
+<p>Carey, Nicholas, Januar Harianto, and Maria Byrne. “Sea Urchins in a High-CO 2 World: Partitioned Effects of Body Size, Ocean Warming and Acidification on Metabolic Rate.” The Journal of Experimental Biology 219, no. 8 (April 15, 2016): 1178–86. <a href="https://doi.org/10.1242/jeb.136101" class="uri">https://doi.org/10.1242/jeb.136101</a>.</p>
+<p>Gamble, S., A.G. Carton, and I. Pirozzi. “Open-Top Static Respirometry Is a Reliable Method to Determine the Routine Metabolic Rate of Barramundi, Lates Calcarifer.” Marine and Freshwater Behaviour and Physiology 47, no. 1 (January 2, 2014): 19–28. <a href="https://doi.org/10.1080/10236244.2013.874119" class="uri">https://doi.org/10.1080/10236244.2013.874119</a>.</p>
+<p>Leclercq, N, Jean-Pierre Gattuso, and J Jaubert. “Measurement of Oxygen Metabolism in Open-Top Aquatic Mesocosms:Application to a Coral Reef Community.” Marine Ecology Progress Series 177 (1999): 299–304. <a href="https://doi.org/10.3354/meps177299" class="uri">https://doi.org/10.3354/meps177299</a>.</p>
+<p>Lighton, John R. B. Measuring Metabolic Rates. Oxford University Press, 2008. <a href="https://doi.org/10.1093/acprof:oso/9780195310610.001.0001" class="uri">https://doi.org/10.1093/acprof:oso/9780195310610.001.0001</a>.</p>
+<p>Stoffels, Rick J. “Physiological Trade-Offs Along a Fast-Slow Lifestyle Continuum in Fishes: What Do They Tell Us about Resistance and Resilience to Hypoxia?” Edited by Jodie L. Rummer. PLOS ONE 10, no. 6 (June 12, 2015): e0130303. <a href="https://doi.org/10.1371/journal.pone.0130303" class="uri">https://doi.org/10.1371/journal.pone.0130303</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intermittent-respirometry.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

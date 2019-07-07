@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>11 Flowthrough respirometry | respR – R Package Documentation</title>
+  <meta name="description" content="Documentation for the R package, respR.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="11 Flowthrough respirometry | respR – R Package Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Flowthrough respirometry | respR – R Package Documentation" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="Januar Harianto and Nicholas Carey">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intermittent-flow-respirometry-complex-example.html">
+<link rel="next" href="pcrit.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
+<li class="part"><span><b>VIGNETTES</b></span></li>
+<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting started</a><ul>
+<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#aquatic-respirometry"><i class="fa fa-check"></i><b>3.1</b> Aquatic Respirometry</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#the-respr-r-package"><i class="fa fa-check"></i><b>3.2</b> The <code>respR</code> R package</a></li>
+<li class="chapter" data-level="3.3" data-path="getting-started.html"><a href="getting-started.html#example-data"><i class="fa fa-check"></i><b>3.3</b> Example Data</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started.html"><a href="getting-started.html#vignettes-and-documentation"><i class="fa fa-check"></i><b>3.4</b> Vignettes and documentation</a></li>
+<li class="chapter" data-level="3.5" data-path="getting-started.html"><a href="getting-started.html#references"><i class="fa fa-check"></i><b>3.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>4</b> Importing data</a><ul>
+<li class="chapter" data-level="4.1" data-path="importing-data.html"><a href="importing-data.html#import_file"><i class="fa fa-check"></i><b>4.1</b> <code>import_file()</code></a></li>
+<li class="chapter" data-level="4.2" data-path="importing-data.html"><a href="importing-data.html#format_time"><i class="fa fa-check"></i><b>4.2</b> <code>format_time()</code></a></li>
+<li class="chapter" data-level="4.3" data-path="importing-data.html"><a href="importing-data.html#dealing-with-timed-events-or-notes"><i class="fa fa-check"></i><b>4.3</b> Dealing with timed events or notes</a></li>
+<li class="chapter" data-level="4.4" data-path="importing-data.html"><a href="importing-data.html#next-steps"><i class="fa fa-check"></i><b>4.4</b> Next steps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html"><i class="fa fa-check"></i><b>5</b> Closed-chamber respirometry</a><ul>
+<li class="chapter" data-level="5.1" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#a-typical-respr-workflow-closed-chamber-respirometry"><i class="fa fa-check"></i><b>5.1</b> A typical respR workflow: Closed-chamber respirometry</a></li>
+<li class="chapter" data-level="5.2" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-1-check-for-common-errors"><i class="fa fa-check"></i><b>5.2</b> Step 1: Check for common errors</a></li>
+<li class="chapter" data-level="5.3" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-2-process-background-respiration"><i class="fa fa-check"></i><b>5.3</b> Step 2: Process background respiration</a></li>
+<li class="chapter" data-level="5.4" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-3-calculate-oxygen-uptake-rate"><i class="fa fa-check"></i><b>5.4</b> Step 3: Calculate oxygen uptake rate</a></li>
+<li class="chapter" data-level="5.5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-4-adjust-for-background-respiration"><i class="fa fa-check"></i><b>5.5</b> Step 4: Adjust for background respiration</a></li>
+<li class="chapter" data-level="5.6" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-5-convert-the-results"><i class="fa fa-check"></i><b>5.6</b> Step 5: Convert the results</a></li>
+<li class="chapter" data-level="5.7" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#summary"><i class="fa fa-check"></i><b>5.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="using-auto-rate.html"><a href="using-auto-rate.html"><i class="fa fa-check"></i><b>6</b> Using <code>auto_rate()</code></a></li>
+<li class="chapter" data-level="7" data-path="performance-in-detecting-linear-regions.html"><a href="performance-in-detecting-linear-regions.html"><i class="fa fa-check"></i><b>7</b> Performance in detecting linear regions</a></li>
+<li class="chapter" data-level="8" data-path="comparative-performance-of-auto-rate-and-lolinr.html"><a href="comparative-performance-of-auto-rate-and-lolinr.html"><i class="fa fa-check"></i><b>8</b> Comparative performance of <code>auto_rate()</code> and <code>LoLinR</code></a></li>
+<li class="chapter" data-level="9" data-path="intermittent-flow-respirometry-simple-example.html"><a href="intermittent-flow-respirometry-simple-example.html"><i class="fa fa-check"></i><b>9</b> Intermittent-flow respirometry: Simple example</a></li>
+<li class="chapter" data-level="10" data-path="intermittent-flow-respirometry-complex-example.html"><a href="intermittent-flow-respirometry-complex-example.html"><i class="fa fa-check"></i><b>10</b> Intermittent-flow respirometry: Complex example</a></li>
+<li class="chapter" data-level="11" data-path="flowthrough-respirometry.html"><a href="flowthrough-respirometry.html"><i class="fa fa-check"></i><b>11</b> Flowthrough respirometry</a></li>
+<li class="chapter" data-level="12" data-path="pcrit.html"><a href="pcrit.html"><i class="fa fa-check"></i><b>12</b> P<sub>crit</sub></a></li>
+<li class="chapter" data-level="13" data-path="two-point-analyses.html"><a href="two-point-analyses.html"><i class="fa fa-check"></i><b>13</b> Two-point analyses</a></li>
+<li class="chapter" data-level="14" data-path="open-science-and-reproducibility-using-respr.html"><a href="open-science-and-reproducibility-using-respr.html"><i class="fa fa-check"></i><b>14</b> Open science and reproducibility using respR</a></li>
+<li class="chapter" data-level="15" data-path="respr-and-the-tidyverse.html"><a href="respr-and-the-tidyverse.html"><i class="fa fa-check"></i><b>15</b> respR and the tidyverse</a><ul>
+<li class="chapter" data-level="15.1" data-path="respr-and-the-tidyverse.html"><a href="respr-and-the-tidyverse.html#working-in-the-tidyverse"><i class="fa fa-check"></i><b>15.1</b> Working in the Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="a-comparison-of-respr-with-other-r-packages.html"><a href="a-comparison-of-respr-with-other-r-packages.html"><i class="fa fa-check"></i><b>16</b> A comparison of respR with other R packages</a></li>
+<li class="chapter" data-level="17" data-path="when-to-use-respr.html"><a href="when-to-use-respr.html"><i class="fa fa-check"></i><b>17</b> When to use respR</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR – R Package Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="flowthrough-respirometry" class="section level1">
+<h1><span class="header-section-number">11</span> Flowthrough respirometry</h1>
+<!-- Flowthrough respirometry differs from other methods in that oxygen depletion is measured from a known continuous flow of water through a respirometer, rather than a known volume, typically after the system has achieved equilibrium.  -->
+<!-- In this method, two oxygen concentrations are needed; 'upstream' and 'downstream' of the experimental chamber, or inflow and outflow concentrations.  -->
+<!-- The inflow concentration is typically a known fixed value and often not continuously monitored, such as fully air-saturated water, or water from a header tank of controlled oxygen concentration. -->
+<!-- The difference between inflow and outflow concentrations, the O~2~ delta, and the flow rate allow calculation of the uptake by the specimen. -->
+<!-- ### Example data -->
+<!-- The example data, `flowthrough.rd`, contains measurements of oxygen consumption in a species of chiton, (*Mopalia lignosa*, Carey, *unpublished*).  Detailed information about the data, including its source and methods, can be obtained with the command `?flowthrough.rd`.  -->
+<!-- ```{r} -->
+<!-- library(respR) -->
+<!-- data("flowthrough.rd") -->
+<!-- head(flowthrough.rd) -->
+<!-- ``` -->
+<!-- We can see this dataset contains time values, both outflow and inflow O~2~ concentrations, and an O~2~ delta, which is simply the difference between inflow and outflow.  -->
+<!-- The O~2~ delta column is not required; we include it here to show an exploratory step in the next section. While any flowthrough data can be analysed in the `calc_rate.ft` function, exploring flowthrough data in `inspect_data()` requires a 3 column data frame of time, outflow O~2~, and inflow O~2~. -->
+<!-- Therefore the user should include all three, even if inflow O~2~ is a column of a single fixed value. In this example it varies, but not significantly from a mean value of 8.88.  -->
+<!-- ## Inspecting data -->
+<!-- Continuous flowthrough data can be inspected for common errors using the `inspect_data()` function. Note, a newer version of this function is available (`inspect()`), but for now does not accept flowthrough data. For now, use `inspect_data()` and we will update this vignette when this update is pushed out.  -->
+<!-- Because flowthrough data will be slightly different we need to use different input operators in `inspect_data()`. By default, `inspect_data()` assumes Time data in column 1 and O~2~ data in column 2. For flowthrough data we typically want to look at the outflow O₂ data, which is in column 2 here, so we do not have to change these defaults: -->
+<!-- ```{r} -->
+<!-- inspect_data(flowthrough.rd) -->
+<!-- ``` -->
+<!-- Unlike in  closed respirometry, in a flowthrough experiment oxygen should generally not decline over time, as long as equilibrium has been achieved, and so regions where rates are consistent are more easily identified.  -->
+<!-- Here, using the top plot, we can see the outflow O~2~ concentration is most consistent in the early stages of the experiment.  -->
+<!-- Since we know in this experiment inflow O~2~ is more-or-less unvarying, this means the specimen's rate is also most consistent here.  -->
+<!-- In closed respirometry data, the bottom plot shows how the rate of the specimen varies over the dataset, but here it shows the rate of change in outflow O~2~ concentration. -->
+<!-- Therefore, values close to zero indicate regions of highly consistent rates by the *specimen*. Here, we can see this illustrated well between rows 200 and 400. -->
+<!-- If, for experimental reasons, the inflow O~2~ concentration is variable, examining consistency in outflow O~2~ would not necessarily equate to consistent rates by the specimen.  -->
+<!-- Instead, we can examine O~2~ delta data, by using other `inspect_data()` operators to specify the column we are interested in. Here delta O~2~ is in column 4: -->
+<!-- ```{r message=FALSE, warning=FALSE, results = "hide"} -->
+<!-- inspect_data(flowthrough.rd, time = 1, oxygen = 4) -->
+<!-- ``` -->
+<!-- Here, we can see that after taking into account variable inflow O~2~, the uptake rates of the specimen are most consistent between rows 200 and 300. -->
+<!-- Note however, this is an exploratory step: these O~2~ delta data should not be saved via `adjust_rate()`. -->
+<!-- Instead the original inflow and outflow O~2~ data should be saved for passing to the next stage, through specifying the columns: -->
+<!-- ```{r results = "hide", fig.keep="none", results = "hide"}  -->
+<!-- chiton.ft <- inspect_data(flowthrough.rd, time = 1, outflow.o2 = 2, inflow.o2 = 3) -->
+<!-- ``` -->
+<!-- ```{r message=FALSE, warning=FALSE, fig.keep="none"} -->
+<!-- chiton.ft$df -->
+<!-- ``` -->
+<!-- We can see only the specifed columns have been included, and the O~2~ delta column removed.  -->
+<!-- ### Flowthrough rate function - `calc_rate.ft()` -->
+<!-- Rates can be detemined from flowthrough data using the `calc_rate.ft()` function. This function accepts several forms of data input;  -->
+<!-- 1. Single values of inflow and outflow concentrations: -->
+<!--     ```{r, eval = FALSE} -->
+<!--     calc_rate.ft(inflow.o2 = 8.88, outflow.o2 = 8.17, flowrate = 0.00234) -->
+<!--     ``` -->
+<!-- 2. Combinations of single or vector values. Vector inputs must be of equal length: -->
+<!--     ```{r, eval = FALSE} -->
+<!--     calc_rate.ft(inflow.o2 = 8.88, outflow.o2 = c(8.17, 8.16, 8.15),  -->
+<!--       flowrate = 0.00234) -->
+<!--     calc_rate.ft(inflow.o2 = c(8.88, 8.87, 8.89),  -->
+<!--       outflow.o2 = c(8,17, 8.16, 8.15), flowrate = 0.00234)   -->
+<!--     calc_rate.ft(inflow.o2 = 8.88, outflow.o2 = flowthrough.rd$o2.out,  -->
+<!--       flowrate = 0.00234) -->
+<!--     calc_rate.ft(inflow.o2 = flowthrough.rd$o2.in, outflow.o2 =  -->
+<!--         flowthrough.rd$o2.out, flowrate = 0.00234) -->
+<!--     ``` -->
+<!-- 4. A data frame containing columns of paired outflow and inflow O~2~ values, with column identifiers: -->
+<!--     ```{r, eval = FALSE} -->
+<!--     calc_rate.ft(flowthrough.rd, time = 1, outflow.o2 = 2, inflow.o2 = 3, flowrate = 0.00234) -->
+<!--     ``` -->
+<!-- 5. An object of class `inspect_data` containing flowthrough data: -->
+<!--     ```{r, eval = FALSE} -->
+<!--     calc_rate.ft(chiton.ft, flowrate = 0.00234) -->
+<!--     ```   -->
+<!-- The `flowrate` operator is required by the function, and it is assumed it will be an unvarying parameter within each separate experiment.  -->
+<!-- Recordings at different flow rates should be analysed separately.  -->
+<!-- Units for flow rate will be specified when rates are converted later (see below), but they should be in units of volume (in L) per unit time (s,m,h). For example, in this dataset the flow rate is 0.00234 in L m^-1^. -->
+<!-- We will calculate rates from the entire dataset using the object we saved earlier from `inspect_data()`:  -->
+<!-- ```{r} -->
+<!-- chiton.ft.rate <- calc_rate.ft(chiton.ft,  flowrate = 0.00234) -->
+<!-- print(chiton.ft.rate) -->
+<!-- ``` -->
+<!-- The output object includes all calculated rates over the dataset and a mean rate.  -->
+<!-- ## Subsetting data -->
+<!-- The `calc_rate.ft()` function currently does not support subsetting. -->
+<!-- The dedicated `subset_data()` function can be used to prepare data or we can use straightforward R subsetting syntax as follows.  -->
+<!-- We saw earlier how rates between rows 200 and 300 appeared to be most consistent, so we will calculate rates from this data region using the dataframe within the object we saved earlier.  -->
+<!-- ```{r} -->
+<!-- chiton.ft.rate.sub <- calc_rate.ft(chiton.ft$df[200:300,], time = 1, outflow.o2 = 3, inflow.o2 = 2, flowrate = 0.00234) -->
+<!-- print(chiton.ft.rate.sub) -->
+<!-- ``` -->
+<!-- Because the function interprets this as a regular data frame, not `inspect_data()` object, we needed to specify the columns.  -->
+<!-- Again, the output objects includes all calculated rates within the subset and a mean rate. -->
+<!-- Note the plot row index on the X-axis shows a row index of the subset, not the original row numbers.  -->
+<!-- ## Adjusting rates -->
+<!-- Similar to the other respirometry methods, a background rate value (typically negative) can be used to adjust flowthrough rates.  -->
+<!-- ``` {r} -->
+<!-- new_adjusted_rate <- adjust_rate(chiton.ft.rate.sub$mean, by = -0.0005) -->
+<!-- ``` -->
+<!-- `respR` does not currently have a specialised function for determining background respiration in flowthrough data. -->
+<!-- However the main `calc_rate.ft` function can be used to examine data from 'blank' experiments for background rates, and these (or an average of several) can be entered as above. -->
+<!-- The user should however be aware that only background rates determined at the *same flow rate* should be used. -->
+<!-- ## Converting rates -->
+<!-- The `convert_rate()` function is used to convert rates to particular units. As with converting rates from closed and intermittent-flow respirometry (i.e. outputs of `calc_rate()`), conversion of flowthrough rates (i.e. from `calc_rate.ft()`) requires the `o2.unit` of the original data, as well as a `time.unit` and `volume` value.  -->
+<!-- With flowthrough data, these relate to the `flowrate` units. As we said earlier, the flow rate should be in L per unit time, therefore the `volume` should be entered as 1, and `time.unit` as the time unit of the flow rate.  -->
+<!-- For example, if the flow rate was in L min^-1^, these should be `time.unit = "m", volume = 1`. Note, in flowthrough respirometry as long as equilibrium has been reached the volume of the respirometer is *not important*, it is the flow rate through it that is important in determining uptake rate. -->
+<!-- The function returns a rate for the specimen, and if a `mass` is entered (in kg) it returns a mass-specific rate. We specify our desired units of the final rates using `output.unit`: -->
+<!-- ```{r} -->
+<!-- # conversion of mean rate -->
+<!-- convert_rate(chiton.ft.rate.sub$mean, o2.unit = "mg/l", time.unit = "m", output.unit = "mg/h", volume = 1) -->
+<!-- convert_rate(chiton.ft.rate.sub$mean, o2.unit = "mg/l", time.unit = "m", output.unit = "mg/h/g", volume = 1, mass = 0.000070) -->
+<!-- ``` -->
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intermittent-flow-respirometry-complex-example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pcrit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

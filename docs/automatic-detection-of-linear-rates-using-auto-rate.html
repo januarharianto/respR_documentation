@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>7 Automatic detection of linear rates using auto_rate() | respR – R Package Documentation</title>
+  <meta name="description" content="Documentation for the R package, respR.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="7 Automatic detection of linear rates using auto_rate() | respR – R Package Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Automatic detection of linear rates using auto_rate() | respR – R Package Documentation" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="Januar Harianto and Nicholas Carey">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="closed-chamber-respirometry.html">
+<link rel="next" href="title.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
+<li class="chapter" data-level="3" data-path="quick-start.html"><a href="quick-start.html"><i class="fa fa-check"></i><b>3</b> Quick start</a><ul>
+<li class="chapter" data-level="3.1" data-path="quick-start.html"><a href="quick-start.html#example-data"><i class="fa fa-check"></i><b>3.1</b> Example data</a></li>
+<li class="chapter" data-level="3.2" data-path="quick-start.html"><a href="quick-start.html#demonstration"><i class="fa fa-check"></i><b>3.2</b> Demonstration</a></li>
+</ul></li>
+<li class="part"><span><b>VIGNETTES</b></span></li>
+<li class="chapter" data-level="4" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>4</b> Getting started</a><ul>
+<li class="chapter" data-level="4.1" data-path="getting-started.html"><a href="getting-started.html#aquatic-respirometry"><i class="fa fa-check"></i><b>4.1</b> Aquatic Respirometry</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-started.html"><a href="getting-started.html#the-respr-r-package"><i class="fa fa-check"></i><b>4.2</b> The <code>respR</code> R package</a></li>
+<li class="chapter" data-level="4.3" data-path="getting-started.html"><a href="getting-started.html#example-data-1"><i class="fa fa-check"></i><b>4.3</b> Example Data</a></li>
+<li class="chapter" data-level="4.4" data-path="getting-started.html"><a href="getting-started.html#vignettes-and-documentation"><i class="fa fa-check"></i><b>4.4</b> Vignettes and documentation</a></li>
+<li class="chapter" data-level="4.5" data-path="getting-started.html"><a href="getting-started.html#references"><i class="fa fa-check"></i><b>4.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>5</b> Importing data</a><ul>
+<li class="chapter" data-level="5.1" data-path="importing-data.html"><a href="importing-data.html#import_file"><i class="fa fa-check"></i><b>5.1</b> <code>import_file()</code></a></li>
+<li class="chapter" data-level="5.2" data-path="importing-data.html"><a href="importing-data.html#format_time"><i class="fa fa-check"></i><b>5.2</b> <code>format_time()</code></a></li>
+<li class="chapter" data-level="5.3" data-path="importing-data.html"><a href="importing-data.html#dealing-with-timed-events-or-notes"><i class="fa fa-check"></i><b>5.3</b> Dealing with timed events or notes</a></li>
+<li class="chapter" data-level="5.4" data-path="importing-data.html"><a href="importing-data.html#next-steps"><i class="fa fa-check"></i><b>5.4</b> Next steps</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html"><i class="fa fa-check"></i><b>6</b> Closed-chamber respirometry</a><ul>
+<li class="chapter" data-level="6.1" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#a-typical-respr-workflow-closed-chamber-respirometry"><i class="fa fa-check"></i><b>6.1</b> A typical respR workflow: Closed-chamber respirometry</a></li>
+<li class="chapter" data-level="6.2" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-1-check-for-common-errors"><i class="fa fa-check"></i><b>6.2</b> Step 1: Check for common errors</a></li>
+<li class="chapter" data-level="6.3" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-2-process-background-respiration"><i class="fa fa-check"></i><b>6.3</b> Step 2: Process background respiration</a></li>
+<li class="chapter" data-level="6.4" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-3-calculate-oxygen-uptake-rate"><i class="fa fa-check"></i><b>6.4</b> Step 3: Calculate oxygen uptake rate</a></li>
+<li class="chapter" data-level="6.5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-4-adjust-for-background-respiration"><i class="fa fa-check"></i><b>6.5</b> Step 4: Adjust for background respiration</a></li>
+<li class="chapter" data-level="6.6" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-5-convert-the-results"><i class="fa fa-check"></i><b>6.6</b> Step 5: Convert the results</a></li>
+<li class="chapter" data-level="6.7" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#summary"><i class="fa fa-check"></i><b>6.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="automatic-detection-of-linear-rates-using-auto-rate.html"><a href="automatic-detection-of-linear-rates-using-auto-rate.html"><i class="fa fa-check"></i><b>7</b> Automatic detection of linear rates using <code>auto_rate()</code></a></li>
+<li class="chapter" data-level="8" data-path="title.html"><a href="title.html"><i class="fa fa-check"></i><b>8</b> Title</a></li>
+<li class="chapter" data-level="9" data-path="title-1.html"><a href="title-1.html"><i class="fa fa-check"></i><b>9</b> Title</a></li>
+<li class="chapter" data-level="10" data-path="title-2.html"><a href="title-2.html"><i class="fa fa-check"></i><b>10</b> Title</a></li>
+<li class="chapter" data-level="11" data-path="title-3.html"><a href="title-3.html"><i class="fa fa-check"></i><b>11</b> Title</a></li>
+<li class="chapter" data-level="12" data-path="title-4.html"><a href="title-4.html"><i class="fa fa-check"></i><b>12</b> Title</a></li>
+<li class="chapter" data-level="13" data-path="title-5.html"><a href="title-5.html"><i class="fa fa-check"></i><b>13</b> Title</a></li>
+<li class="chapter" data-level="14" data-path="title-6.html"><a href="title-6.html"><i class="fa fa-check"></i><b>14</b> Title</a></li>
+<li class="chapter" data-level="15" data-path="title-7.html"><a href="title-7.html"><i class="fa fa-check"></i><b>15</b> Title</a></li>
+<li class="chapter" data-level="16" data-path="title-8.html"><a href="title-8.html"><i class="fa fa-check"></i><b>16</b> Title</a></li>
+<li class="chapter" data-level="17" data-path="title-9.html"><a href="title-9.html"><i class="fa fa-check"></i><b>17</b> Title</a></li>
+<li class="chapter" data-level="18" data-path="title-10.html"><a href="title-10.html"><i class="fa fa-check"></i><b>18</b> Title</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR – R Package Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="automatic-detection-of-linear-rates-using-auto_rate" class="section level1">
+<h1><span class="header-section-number">7</span> Automatic detection of linear rates using <code>auto_rate()</code></h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="closed-chamber-respirometry.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="title.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

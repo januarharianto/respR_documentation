@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>5 Closed-chamber respirometry | respR – R Package Documentation</title>
+  <meta name="description" content="Documentation for the R package, respR.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="5 Closed-chamber respirometry | respR – R Package Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Closed-chamber respirometry | respR – R Package Documentation" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="Januar Harianto and Nicholas Carey">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="importing-data.html">
+<link rel="next" href="using-auto-rate.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
+<li class="part"><span><b>VIGNETTES</b></span></li>
+<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting started</a><ul>
+<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#aquatic-respirometry"><i class="fa fa-check"></i><b>3.1</b> Aquatic Respirometry</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#the-respr-r-package"><i class="fa fa-check"></i><b>3.2</b> The <code>respR</code> R package</a></li>
+<li class="chapter" data-level="3.3" data-path="getting-started.html"><a href="getting-started.html#example-data"><i class="fa fa-check"></i><b>3.3</b> Example Data</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started.html"><a href="getting-started.html#vignettes-and-documentation"><i class="fa fa-check"></i><b>3.4</b> Vignettes and documentation</a></li>
+<li class="chapter" data-level="3.5" data-path="getting-started.html"><a href="getting-started.html#references"><i class="fa fa-check"></i><b>3.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>4</b> Importing data</a><ul>
+<li class="chapter" data-level="4.1" data-path="importing-data.html"><a href="importing-data.html#import_file"><i class="fa fa-check"></i><b>4.1</b> <code>import_file()</code></a></li>
+<li class="chapter" data-level="4.2" data-path="importing-data.html"><a href="importing-data.html#format_time"><i class="fa fa-check"></i><b>4.2</b> <code>format_time()</code></a></li>
+<li class="chapter" data-level="4.3" data-path="importing-data.html"><a href="importing-data.html#dealing-with-timed-events-or-notes"><i class="fa fa-check"></i><b>4.3</b> Dealing with timed events or notes</a></li>
+<li class="chapter" data-level="4.4" data-path="importing-data.html"><a href="importing-data.html#next-steps"><i class="fa fa-check"></i><b>4.4</b> Next steps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html"><i class="fa fa-check"></i><b>5</b> Closed-chamber respirometry</a><ul>
+<li class="chapter" data-level="5.1" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#a-typical-respr-workflow-closed-chamber-respirometry"><i class="fa fa-check"></i><b>5.1</b> A typical respR workflow: Closed-chamber respirometry</a></li>
+<li class="chapter" data-level="5.2" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-1-check-for-common-errors"><i class="fa fa-check"></i><b>5.2</b> Step 1: Check for common errors</a></li>
+<li class="chapter" data-level="5.3" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-2-process-background-respiration"><i class="fa fa-check"></i><b>5.3</b> Step 2: Process background respiration</a></li>
+<li class="chapter" data-level="5.4" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-3-calculate-oxygen-uptake-rate"><i class="fa fa-check"></i><b>5.4</b> Step 3: Calculate oxygen uptake rate</a></li>
+<li class="chapter" data-level="5.5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-4-adjust-for-background-respiration"><i class="fa fa-check"></i><b>5.5</b> Step 4: Adjust for background respiration</a></li>
+<li class="chapter" data-level="5.6" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-5-convert-the-results"><i class="fa fa-check"></i><b>5.6</b> Step 5: Convert the results</a></li>
+<li class="chapter" data-level="5.7" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#summary"><i class="fa fa-check"></i><b>5.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="using-auto-rate.html"><a href="using-auto-rate.html"><i class="fa fa-check"></i><b>6</b> Using <code>auto_rate()</code></a></li>
+<li class="chapter" data-level="7" data-path="performance-in-detecting-linear-regions.html"><a href="performance-in-detecting-linear-regions.html"><i class="fa fa-check"></i><b>7</b> Performance in detecting linear regions</a></li>
+<li class="chapter" data-level="8" data-path="comparative-performance-of-auto-rate-and-lolinr.html"><a href="comparative-performance-of-auto-rate-and-lolinr.html"><i class="fa fa-check"></i><b>8</b> Comparative performance of <code>auto_rate()</code> and <code>LoLinR</code></a></li>
+<li class="chapter" data-level="9" data-path="intermittent-flow-respirometry-simple-example.html"><a href="intermittent-flow-respirometry-simple-example.html"><i class="fa fa-check"></i><b>9</b> Intermittent-flow respirometry: Simple example</a></li>
+<li class="chapter" data-level="10" data-path="intermittent-flow-respirometry-complex-example.html"><a href="intermittent-flow-respirometry-complex-example.html"><i class="fa fa-check"></i><b>10</b> Intermittent-flow respirometry: Complex example</a></li>
+<li class="chapter" data-level="11" data-path="flowthrough-respirometry.html"><a href="flowthrough-respirometry.html"><i class="fa fa-check"></i><b>11</b> Flowthrough respirometry</a></li>
+<li class="chapter" data-level="12" data-path="pcrit.html"><a href="pcrit.html"><i class="fa fa-check"></i><b>12</b> P<sub>crit</sub></a></li>
+<li class="chapter" data-level="13" data-path="two-point-analyses.html"><a href="two-point-analyses.html"><i class="fa fa-check"></i><b>13</b> Two-point analyses</a></li>
+<li class="chapter" data-level="14" data-path="open-science-and-reproducibility-using-respr.html"><a href="open-science-and-reproducibility-using-respr.html"><i class="fa fa-check"></i><b>14</b> Open science and reproducibility using respR</a></li>
+<li class="chapter" data-level="15" data-path="respr-and-the-tidyverse.html"><a href="respr-and-the-tidyverse.html"><i class="fa fa-check"></i><b>15</b> respR and the tidyverse</a><ul>
+<li class="chapter" data-level="15.1" data-path="respr-and-the-tidyverse.html"><a href="respr-and-the-tidyverse.html#working-in-the-tidyverse"><i class="fa fa-check"></i><b>15.1</b> Working in the Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="a-comparison-of-respr-with-other-r-packages.html"><a href="a-comparison-of-respr-with-other-r-packages.html"><i class="fa fa-check"></i><b>16</b> A comparison of respR with other R packages</a></li>
+<li class="chapter" data-level="17" data-path="when-to-use-respr.html"><a href="when-to-use-respr.html"><i class="fa fa-check"></i><b>17</b> When to use respR</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR – R Package Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="closed-chamber-respirometry" class="section level1">
+<h1><span class="header-section-number">5</span> Closed-chamber respirometry</h1>
+<div id="a-typical-respr-workflow-closed-chamber-respirometry" class="section level2">
+<h2><span class="header-section-number">5.1</span> A typical respR workflow: Closed-chamber respirometry</h2>
+<p>Here we describe a typical workflow for a <strong>closed-chamber</strong> respirometry experiment. The example data used here is <code>urchins.rd</code>, where the first column of the data frame is <em>time</em> data, while the remaining 18 columns are dissolved <em><span class="math inline">\(O_2\)</span></em> data. Columns 18 and 19 contain background respiration recordings. The units are minutes and mg/L of <span class="math inline">\(O_2\)</span>, however all analyses in <code>respR</code> are unitless, and we only consider units when we later come to convert rates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(urchins.rd)</code></pre></div>
+<pre><code>## # A tibble: 6 x 19
+##   time.min     a     b     c     d     e     f     g     h     i     j
+##      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1      0    7.86  7.86  7.64  7.65  7.87  7.74  7.62  7.65  7.96  7.75
+## 2      0.2  7.87  7.79  7.6   7.71  7.87  7.72  7.61  7.66  7.97  7.72
+## 3      0.3  7.89  7.7   7.6   7.7   7.9   7.72  7.61  7.63  7.98  7.72
+## 4      0.5  7.9   7.68  7.6   7.72  7.92  7.74  7.62  7.66  7.97  7.72
+## 5      0.7  7.87  7.64  7.6   7.67  7.9   7.73  7.59  7.65  7.95  7.71
+## 6      0.8  7.82  7.69  7.61  7.61  7.88  7.7   7.6   7.65  7.94  7.7 
+## # … with 8 more variables: k &lt;dbl&gt;, l &lt;dbl&gt;, m &lt;dbl&gt;, n &lt;dbl&gt;, o &lt;dbl&gt;,
+## #   p &lt;dbl&gt;, b1 &lt;dbl&gt;, b2 &lt;dbl&gt;</code></pre>
+</div>
+<div id="step-1-check-for-common-errors" class="section level2">
+<h2><span class="header-section-number">5.2</span> Step 1: Check for common errors</h2>
+<p>We first use <code>inspect()</code> to prepare the data and to scan for:</p>
+<ul>
+<li>Missing or non-numeric (<code>NA</code>/<code>NaN</code>) data</li>
+<li>Sequential time data</li>
+<li>Duplicate time data</li>
+<li>Evenly-spaced time data</li>
+</ul>
+<p>By default, the function assumes the first column of the data frame is time data, while the second column is <span class="math inline">\(O_2\)</span> data. In the case of <code>urchins.rd</code> where a multi-column dataset is provided, the function defaults to using the first two columns. However, the <code>time =</code> and <code>oxygen =</code> arguments can modify that behaviour to select particular columns.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin &lt;-<span class="st"> </span><span class="kw">inspect</span>(urchins.rd, <span class="dt">time =</span>  <span class="dv">1</span>, <span class="dt">oxygen =</span> <span class="dv">15</span>)</code></pre></div>
+<p><img src="respR_documentation_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre><code>## 
+## # inspect # -----------------------------
+##               time.min    n
+## NA/NAN            pass pass
+## sequential        pass    -
+## duplicated        pass    -
+## evenly-spaced     WARN    -
+## Uneven time data locations  (first 20 shown) in column: time.min n 
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre><code>## Warning: Time values are not evenly-spaced.</code></pre>
+<p>From the plot, we can see irregularities in these data near the end of the timeseries (in this case the specimen had interfered with the oxygen sensor). A linear regression of the entire data series would therefore give an erroneous calculation of the true rate. However, the bottom output plot shows that over the initial stages of the experiment, oxygen uptake shows a consistent rate, and so in this experiment this section would be suitable for analysis.</p>
+<p>The function also warns us that time data is not <em>numerically</em> evenly-spaced. However, <em>this does not mean the data cannot be processed</em>. Rather than make assumptions that rows represent evenly spaced datapoints, the functions in <code>respR</code> use actual time values for analyses and calculations, and so even irregularly spaced data are analysed correctly. This warning is for information purposes only: it is to make the user aware that if they use row numbers for manual operations such as subsetting, the same width may not represent the same time period. For now, the data frame is saved as an object, <code>urchin</code> which contains the original data columns we selected coerced into a data frame, and various other metadata.</p>
+<p><strong>It should be noted that using <code>inspect()</code> is optional</strong> - the main functions in <code>respR</code> will readily accept regular <code>R</code> data structures (e.g. data frames, tibbles, vectors) as long as data are numeric and error-free. Running <code>inspect()</code> is a qualitative, exploratory step that highlights potential issues about the data before analysis. We use this particular example, with an obvious error towards the end, to illustrate the point that you should always visualise and explore your data before analysis. <code>respR</code> has been designed to make this easy.</p>
+<p><strong>Note there is an older version of this function called <code>inspect_data()</code></strong> - this function has been deprecated, but kept in the package to maintain compatibility with older code. It will not be updated in the future, so users should use <code>inspect()</code>.</p>
+</div>
+<div id="step-2-process-background-respiration" class="section level2">
+<h2><span class="header-section-number">5.3</span> Step 2: Process background respiration</h2>
+<p>The presence of microorganisms may be a potential source of experimental bias, and we may want to account for background respiration rates during experiments. Since background rates typically account for a small percentage of experimental rates, these often-called “blank” experiments are routinely conducted alongside, or before and after main experiments, and often the rates are averaged across several datasets to obtain a more accurate estimate of the correction.</p>
+<p>The function <code>calc_rate.bg()</code> can be used to simultaneously process multiple background rate measurements as long as they share the <strong>same units of time and oxygen data as the experiments they will be used to correct</strong>. In <code>urchins.rd</code>, background respiration was recorded and saved in columns 18 and 19. We analyse the data using the specialised function <code>calc_rate.bg()</code> and save the output as an object. Note the function allows us to subset the data, here by <code>time</code> from 5 to 40 minutes, to remove potentially erroneous sections at the start (or end) before the system had reached stability.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bg &lt;- calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19, from = 5, to = 40, </span>
+<span class="co">#   by = &quot;time&quot;)</span>
+<span class="co"># print(bg)</span></code></pre></div>
+<p>This object contains both individual background rates for each data column entered, and an averaged rate which, by default, will be used as the correction rate when this is applied later in <code>adjust_rate</code>.</p>
+</div>
+<div id="step-3-calculate-oxygen-uptake-rate" class="section level2">
+<h2><span class="header-section-number">5.4</span> Step 3: Calculate oxygen uptake rate</h2>
+<p>Calling the function <code>calc_rate()</code> on the <code>inspect()</code> object, with no additional arguments, will prompt the function to perform a linear regression on the entire data series.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">calc_rate</span>(urchin) <span class="co"># same as: calc_rate(urchin$df)</span></code></pre></div>
+<p><img src="respR_documentation_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre><code>## 
+## # calc_rate # -------------------
+## Rate(s):
+## [1] -0.01749242</code></pre>
+<p>Note how the function recognises the <code>inspect()</code> object. Alternatively, you can specify a <code>data.frame</code> object containing raw data, in which case the function will automatically consider the first column as time data, and the second column as dissolved <span class="math inline">\(O_2\)</span> data.</p>
+<p>In many cases, there is a need to truncate or subset the data before rate is determined. For example, we may want to determine rate over an exact period of time, or within a threshold of O<sub>2</sub> concentrations. Equipment interference or other factors may cause irregularities in the data. We can work around such errors by subsetting the regions that are not erroneous and still obtain valid results.</p>
+<p>Based on the <code>from</code> and <code>to</code> arguments, a user may use <code>calc_rate()</code> to subset data in any of 4 ways:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Time period</strong> (<code>by = &quot;time&quot;</code>) - <em>“What is the rate over a specific 25 minute period?”</em></li>
+<li><strong>Total oxygen consumed</strong> (<code>by = &quot;o2&quot;</code>) - <em>“At what rate is oxygen consumed between saturation points of 95% and 80%?”</em></li>
+<li><strong>Proportion based on total oxygen consumed</strong> (<code>by = &quot;proportion&quot;</code>) - <em>“What is the rate from 4/5ths (0.8) to halfway (0.5) along the data?”</em></li>
+<li><strong>Precise subsetting by row</strong> (<code>by = &quot;row&quot;</code>). - <em>“I’d like to determine rate between rows 11 and 273.”</em></li>
+</ol>
+<p>We do not need to be overly precise; if input values of O<sub>2</sub> and time do not match exactly to a value in the data, the function will identify the closest matching values, rounded down, and use these for subsequent calculations.</p>
+<p>Here we’ll select a 25 minute period before the interference occurred:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rate &lt;-<span class="st"> </span><span class="kw">calc_rate</span>(urchin, <span class="dt">from =</span> <span class="dv">4</span>, <span class="dt">to =</span> <span class="dv">29</span>, <span class="dt">by =</span> <span class="st">&quot;time&quot;</span>)</code></pre></div>
+<p><img src="respR_documentation_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>The saved object can be exported to a file, or explored using generic R commands.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># uncomment to run and save as file</span>
+<span class="co"># write.csv(summary(rate), file = &quot;results.csv&quot;)</span>
+
+<span class="kw">print</span>(rate)</code></pre></div>
+<pre><code>## 
+## # calc_rate # -------------------
+## Rate(s):
+## [1] -0.02177588</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(rate)</code></pre></div>
+<pre><code>## Summary:
+##    intercept_b0     rate_b1   rsq row endrow time endtime  oxy endoxy
+## 1:     7.636454 -0.02177588 0.987  25    175    4      29 7.58   6.98
+##    rowlength timelength rate_twopoint
+## 1:       150         25        -0.024</code></pre>
+<p>The rate can be seen as the second entry <code>rate_b1</code>, and other summary data are saved in the object. The output also includes a <code>rate_2pt</code>. This is the rate determined by simple two-point calculation of difference in O<sub>2</sub> divided by difference in Time. For almost all analyses, the <code>rate_b1</code> should be used. See <a href="https://januarharianto.github.io/respR/articles/twopoint.html">Two-point analyses</a> for an explanation of this output and when it should be used.</p>
+<p>Plotting the output provides a series of diagnostic plots of the data subset that was analysed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(rate)</code></pre></div>
+<pre><code>## 
+## # plot # ------------------------
+## Plotting...this may take a while for large datasets.</code></pre>
+<p><img src="respR_documentation_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre><code>## Done.</code></pre>
+</div>
+<div id="step-4-adjust-for-background-respiration" class="section level2">
+<h2><span class="header-section-number">5.5</span> Step 4: Adjust for background respiration</h2>
+<p>Since background rate has been calculated in <code>calc_rate.bg()</code>, adjustment is straightforward using the function <code>adjust_rate()</code>. The <code>rate</code> input can be an object of class <code>calc_rate</code> or <code>auto_rate</code>, or any numeric value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a.rate &lt;- adjust_rate(rate, bg)</span>
+<span class="co"># a.rate</span></code></pre></div>
+<p>A background correction can also be entered manually. Care should be taken to include the correct (typically negative) sign.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.rate &lt;-<span class="st"> </span><span class="kw">adjust_rate</span>(rate, <span class="op">-</span><span class="fl">0.00083</span>)</code></pre></div>
+<pre><code>## 
+## Rate adjustments applied. Use print() command for more info.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.rate</code></pre></div>
+<pre><code>## 
+## # adjust_rate # -------------------------
+## Note: please consider the sign of the value while correcting the rate.
+## 
+## Rank/position 1 result shown. To see all results use summary().
+## Input rate: -0.02177588
+## Adjustment: -0.00083
+## Adj. rate: -0.02094588</code></pre>
+<p>For experiments where there is a quantified background <strong>input</strong> of oxygen, such as in <em>open-tank</em> respirometry, <code>adjust_rate()</code> can be used to correct rates using a <em>positive</em> background value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.rate &lt;-<span class="st"> </span><span class="kw">adjust_rate</span>(rate, <span class="fl">0.002</span>)</code></pre></div>
+<pre><code>## 
+## Rate adjustments applied. Use print() command for more info.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.rate</code></pre></div>
+<pre><code>## 
+## # adjust_rate # -------------------------
+## Note: please consider the sign of the value while correcting the rate.
+## 
+## Rank/position 1 result shown. To see all results use summary().
+## Input rate: -0.02177588
+## Adjustment: 0.002
+## Adj. rate: -0.02377588</code></pre>
+</div>
+<div id="step-5-convert-the-results" class="section level2">
+<h2><span class="header-section-number">5.6</span> Step 5: Convert the results</h2>
+<p>Note, that until this point <code>respR</code> has <strong>not required units of time or oxygen to be entered</strong>. Here, we convert calculated, unitless rates to specified output units.</p>
+<p>For example, we may want to calculate:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\dot{V}O_2\)</span> - Total change in O<sub>2</sub> per unit time within the chamber; or</li>
+<li><span class="math inline">\(\dot{M}O_2\)</span> - Mass-specific rate of change in O<sub>2</sub> per unit time of the specimen.</li>
+</ol>
+<p>The function <code>convert_rate()</code> can be used to convert rate values to chamber volume and/or specimen mass specific values. This requires the units of the original data (<code>o2.unit</code>, <code>time.unit</code>), and in SI units (L, kg) the <code>volume</code> of fluid in the chamber, and <code>mass</code> of the specimen.</p>
+<p><strong>Note:</strong> the <code>volume</code> is volume of water in the respirometer, <strong>not the volume of the respirometer</strong>. That is, it represents the effective volume; a specimen might displace a significant proportion of the water, depending on its size. Therefore the volume of water entered here should equal the volume of the respirometer <strong>minus the volume of the specimen</strong>. It depends on your experiment how you determine water volume. There are several approaches to calculate the volume of a specimen; geometrically, through displacement in a separate vessel, or calculated from the mass assuming a density value (e.g. for fish it is often assumed they have an equal density as water, that is ~1000 kg/m^3). Volume could also be determined directly by pouring out the water at the end of the experiment, or by a weighing approach.</p>
+<p>For an example of <span class="math inline">\(VO_2\)</span>, or absolute oxygen uptake rate, we may convert the output of <code>calc_rate()</code> to O<sub>2</sub> consumed per hour:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">convert_rate</span>(a.rate, 
+             <span class="dt">o2.unit =</span> <span class="st">&quot;mg/L&quot;</span>, 
+             <span class="dt">time.unit =</span> <span class="st">&quot;min&quot;</span>, 
+             <span class="dt">output.unit =</span> <span class="st">&quot;mg/h&quot;</span>, 
+             <span class="dt">volume =</span> <span class="fl">1.09</span>)</code></pre></div>
+<pre><code>## 
+## # convert_rate # ------------------------
+## Rank/position 1 result shown. To see all results use summary().
+## Input:
+## [1] -0.02377588
+## [1] &quot;mg/L&quot; &quot;min&quot; 
+## Converted:
+## [1] -1.554943
+## [1] &quot;mg/hour&quot;</code></pre>
+<p>We can also convert the rate to a volume-corrected, mass-specific rate:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">convert_rate</span>(a.rate, 
+             <span class="dt">o2.unit =</span> <span class="st">&quot;mgl-1&quot;</span>, 
+             <span class="dt">time.unit =</span> <span class="st">&quot;m&quot;</span>, 
+             <span class="dt">output.unit =</span> <span class="st">&quot;mg/s/kg&quot;</span>,
+             <span class="dt">volume =</span> <span class="fl">1.09</span>, 
+             <span class="dt">mass =</span> <span class="fl">0.19</span>)</code></pre></div>
+<pre><code>## 
+## # convert_rate # ------------------------
+## Rank/position 1 result shown. To see all results use summary().
+## Input:
+## [1] -0.02377588
+## [1] &quot;mg/L&quot; &quot;min&quot; 
+## Converted:
+## [1] -0.002273308
+## [1] &quot;mg/sec/kg&quot;</code></pre>
+<p>A “fuzzy” string matching algorithm is used to automatically recognise variations in base units, allowing natural, intuitive input of units. For example, <code>&quot;ml/s&quot;</code>, <code>&quot;mL/sec&quot;</code>, <code>&quot;milliliter/s&quot;</code>, and <code>&quot;millilitre/second&quot;</code> are all equally identified as <code>mL/s</code>. Unit delimiters can be any combination of a space, dot (<code>.</code>), forward-slash (<code>/</code>), or the “per” unit (<code>-1</code>). Thus, <code>&quot;ml/kg&quot;</code>, <code>&quot;mL / kg&quot;</code>, <code>&quot;mL /kilogram&quot;</code>, <code>&quot;ml kg-1&quot;</code> or <code>&quot;ml.kg-1&quot;</code> are equally recognised as <code>mL/kg</code>. For a reminder on what units are available to use, call <code>unit_args()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unit_args</span>()</code></pre></div>
+<pre><code>## Note: A string-matching algorithm is used to identify units. 
+## E.g. all of these are the same: mg/L; mg/l, mg L-1, mgL-1, mg per litre, mg.l-1, mg.L-1
+## 
+## O2 Units - Do not require t, S and P
+## [1] &quot;mg/L&quot;   &quot;ug/L&quot;   &quot;mmol/L&quot; &quot;umol/L&quot;
+## 
+## O2 Units - Require t, S and P
+##  [1] &quot;mL/L&quot;    &quot;mg/kg&quot;   &quot;ug/kg&quot;   &quot;mmol/kg&quot; &quot;umol/kg&quot; &quot;mL/kg&quot;   &quot;%&quot;      
+##  [8] &quot;Torr&quot;    &quot;hPa&quot;     &quot;kPa&quot;     &quot;mmHg&quot;    &quot;inHg&quot;   
+## 
+## Time units
+## [1] &quot;s&quot; &quot;m&quot; &quot;h&quot;
+## 
+## Output mass units
+## [1] &quot;ug&quot; &quot;mg&quot; &quot;g&quot;  &quot;kg&quot;</code></pre>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">5.7</span> Summary</h2>
+<p>This is an example of a straightforward analysis of a <em>closed-chamber</em> respirometry experiment. This entire analysis can be documented and shared in only a few lines of code, making it entirely reproducible if the original data file is included:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># # import and inspect</span>
+<span class="co"># urchin &lt;- inspect(urchins.rd, time = 1, oxygen = 15)</span>
+<span class="co"># </span>
+<span class="co"># # Background</span>
+<span class="co"># bg &lt;- calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19, from = 5, to = 40, by = &quot;time&quot;)</span>
+<span class="co"># </span>
+<span class="co"># # Specimen rate</span>
+<span class="co"># rate &lt;- calc_rate(urchin, from = 4, to = 29, by = &quot;time&quot;)</span>
+<span class="co"># </span>
+<span class="co"># # Adjust rate</span>
+<span class="co"># a.rate &lt;- adjust_rate(rate, bg)</span>
+<span class="co"># </span>
+<span class="co"># # Convert to final rate units</span>
+<span class="co"># urchin_MO2 &lt;- convert_rate(a.rate,</span>
+<span class="co">#                            o2.unit = &quot;mgl-1&quot;, </span>
+<span class="co">#                            time.unit = &quot;m&quot;, </span>
+<span class="co">#                            output.unit = &quot;mg/s/kg&quot;, </span>
+<span class="co">#                            volume = 1.09, </span>
+<span class="co">#                            mass = 0.19)</span>
+<span class="co"># </span>
+<span class="co"># # Alternatively, use dplyr pipes, adding a print() between functions:</span>
+<span class="co"># </span>
+<span class="co"># urchins.rd %&gt;%                                           # With the data object,</span>
+<span class="co">#   inspect(1, 15) %&gt;%                                     # inspect, then</span>
+<span class="co">#   calc_rate(from = 4, to = 29, by = &quot;time&quot;) %&gt;%          # calculate rate, then</span>
+<span class="co">#   print() %&gt;%</span>
+<span class="co">#   adjust_rate(</span>
+<span class="co">#     calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19,     # adjust bg rate, then</span>
+<span class="co">#       from = 5, to = 40, by = &quot;time&quot;)) %&gt;%</span>
+<span class="co">#   print() %&gt;%</span>
+<span class="co">#   convert_rate(o2.unit = &quot;mgl-1&quot;, time.unit = &quot;m&quot;,     </span>
+<span class="co">#     output.unit = &quot;mg/s/kg&quot;, volume = 1.09, mass = 0.19) # convert units.</span></code></pre></div>
+<!-- Other vignettes go into more detail about different experiment types and other analyses.  -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="importing-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-auto-rate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

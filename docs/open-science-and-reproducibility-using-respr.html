@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>14 Open science and reproducibility using respR | respR – R Package Documentation</title>
+  <meta name="description" content="Documentation for the R package, respR.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="14 Open science and reproducibility using respR | respR – R Package Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14 Open science and reproducibility using respR | respR – R Package Documentation" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="Januar Harianto and Nicholas Carey">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="two-point-analyses.html">
+<link rel="next" href="respr-and-the-tidyverse.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation</a></li>
+<li class="part"><span><b>VIGNETTES</b></span></li>
+<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting started</a><ul>
+<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#aquatic-respirometry"><i class="fa fa-check"></i><b>3.1</b> Aquatic Respirometry</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#the-respr-r-package"><i class="fa fa-check"></i><b>3.2</b> The <code>respR</code> R package</a></li>
+<li class="chapter" data-level="3.3" data-path="getting-started.html"><a href="getting-started.html#example-data"><i class="fa fa-check"></i><b>3.3</b> Example Data</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started.html"><a href="getting-started.html#vignettes-and-documentation"><i class="fa fa-check"></i><b>3.4</b> Vignettes and documentation</a></li>
+<li class="chapter" data-level="3.5" data-path="getting-started.html"><a href="getting-started.html#references"><i class="fa fa-check"></i><b>3.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>4</b> Importing data</a><ul>
+<li class="chapter" data-level="4.1" data-path="importing-data.html"><a href="importing-data.html#import_file"><i class="fa fa-check"></i><b>4.1</b> <code>import_file()</code></a></li>
+<li class="chapter" data-level="4.2" data-path="importing-data.html"><a href="importing-data.html#format_time"><i class="fa fa-check"></i><b>4.2</b> <code>format_time()</code></a></li>
+<li class="chapter" data-level="4.3" data-path="importing-data.html"><a href="importing-data.html#dealing-with-timed-events-or-notes"><i class="fa fa-check"></i><b>4.3</b> Dealing with timed events or notes</a></li>
+<li class="chapter" data-level="4.4" data-path="importing-data.html"><a href="importing-data.html#next-steps"><i class="fa fa-check"></i><b>4.4</b> Next steps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html"><i class="fa fa-check"></i><b>5</b> Closed-chamber respirometry</a><ul>
+<li class="chapter" data-level="5.1" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#a-typical-respr-workflow-closed-chamber-respirometry"><i class="fa fa-check"></i><b>5.1</b> A typical respR workflow: Closed-chamber respirometry</a></li>
+<li class="chapter" data-level="5.2" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-1-check-for-common-errors"><i class="fa fa-check"></i><b>5.2</b> Step 1: Check for common errors</a></li>
+<li class="chapter" data-level="5.3" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-2-process-background-respiration"><i class="fa fa-check"></i><b>5.3</b> Step 2: Process background respiration</a></li>
+<li class="chapter" data-level="5.4" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-3-calculate-oxygen-uptake-rate"><i class="fa fa-check"></i><b>5.4</b> Step 3: Calculate oxygen uptake rate</a></li>
+<li class="chapter" data-level="5.5" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-4-adjust-for-background-respiration"><i class="fa fa-check"></i><b>5.5</b> Step 4: Adjust for background respiration</a></li>
+<li class="chapter" data-level="5.6" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#step-5-convert-the-results"><i class="fa fa-check"></i><b>5.6</b> Step 5: Convert the results</a></li>
+<li class="chapter" data-level="5.7" data-path="closed-chamber-respirometry.html"><a href="closed-chamber-respirometry.html#summary"><i class="fa fa-check"></i><b>5.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="using-auto-rate.html"><a href="using-auto-rate.html"><i class="fa fa-check"></i><b>6</b> Using <code>auto_rate()</code></a></li>
+<li class="chapter" data-level="7" data-path="performance-in-detecting-linear-regions.html"><a href="performance-in-detecting-linear-regions.html"><i class="fa fa-check"></i><b>7</b> Performance in detecting linear regions</a></li>
+<li class="chapter" data-level="8" data-path="comparative-performance-of-auto-rate-and-lolinr.html"><a href="comparative-performance-of-auto-rate-and-lolinr.html"><i class="fa fa-check"></i><b>8</b> Comparative performance of <code>auto_rate()</code> and <code>LoLinR</code></a></li>
+<li class="chapter" data-level="9" data-path="intermittent-flow-respirometry-simple-example.html"><a href="intermittent-flow-respirometry-simple-example.html"><i class="fa fa-check"></i><b>9</b> Intermittent-flow respirometry: Simple example</a></li>
+<li class="chapter" data-level="10" data-path="intermittent-flow-respirometry-complex-example.html"><a href="intermittent-flow-respirometry-complex-example.html"><i class="fa fa-check"></i><b>10</b> Intermittent-flow respirometry: Complex example</a></li>
+<li class="chapter" data-level="11" data-path="flowthrough-respirometry.html"><a href="flowthrough-respirometry.html"><i class="fa fa-check"></i><b>11</b> Flowthrough respirometry</a></li>
+<li class="chapter" data-level="12" data-path="pcrit.html"><a href="pcrit.html"><i class="fa fa-check"></i><b>12</b> P<sub>crit</sub></a></li>
+<li class="chapter" data-level="13" data-path="two-point-analyses.html"><a href="two-point-analyses.html"><i class="fa fa-check"></i><b>13</b> Two-point analyses</a></li>
+<li class="chapter" data-level="14" data-path="open-science-and-reproducibility-using-respr.html"><a href="open-science-and-reproducibility-using-respr.html"><i class="fa fa-check"></i><b>14</b> Open science and reproducibility using respR</a></li>
+<li class="chapter" data-level="15" data-path="respr-and-the-tidyverse.html"><a href="respr-and-the-tidyverse.html"><i class="fa fa-check"></i><b>15</b> respR and the tidyverse</a><ul>
+<li class="chapter" data-level="15.1" data-path="respr-and-the-tidyverse.html"><a href="respr-and-the-tidyverse.html#working-in-the-tidyverse"><i class="fa fa-check"></i><b>15.1</b> Working in the Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="a-comparison-of-respr-with-other-r-packages.html"><a href="a-comparison-of-respr-with-other-r-packages.html"><i class="fa fa-check"></i><b>16</b> A comparison of respR with other R packages</a></li>
+<li class="chapter" data-level="17" data-path="when-to-use-respr.html"><a href="when-to-use-respr.html"><i class="fa fa-check"></i><b>17</b> When to use respR</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR – R Package Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="open-science-and-reproducibility-using-respr" class="section level1">
+<h1><span class="header-section-number">14</span> Open science and reproducibility using respR</h1>
+<!-- One of the main motivations in creating `respR` was to promote open, reproducible respirometry analyses.  -->
+<!-- Respirometry is ubiquitous in experimental biology, however there is a lack of standard approaches in analysing respirometry data. Reporting of respirometry analyses is often vague and lacking in detail. This can be understandable given journal word limits, however it hinders attempts to reproduce or scrutinise the data and analyses. In particular, many analysis criteria and parameters are underreported. For example, the criteria used to select regions over which rates were determined, or in the case of maximum or minimum rates, the width used when fitting multiple regressions.  -->
+<!-- In the era of cheap data storage, and easy sharing of files online, there is little reason why all stages of analyses and raw data cannot be made available to reviewers, readers and other investigators as supplementary material or in specialised online repositories. We have designed `respR` to help make this process straightforward.  -->
+<!-- ## Readable, concise code -->
+<!-- The functions in `respR` have clear, unambiguous arguments describing the operators and the parameters used in analysis. Therefore, given some familiarity with the package functions, the code is very human-readable, and it is usually clear under what parameters an analysis was conducted. We have minimised the number of function operators where possible, mainly to streamline and simplify analyses, but this also has the side benefit of making input code less verbose and more readable.  -->
+<!-- This readable code, along with the fact that an end-to-end workflow could potentially consist of processing raw data through as few as three functions, means a `respR` analysis for a single experiment could consist of only a few lines of code. See the end of the [closed chamber](https://januarharianto.github.io/respR/articles/closed.html#summary) and [intermittent flow](https://januarharianto.github.io/respR/articles/intermittent2.html#a-complete-analysis) vignettes for examples of how even complex analyses can be conducted in only a few lines of code.  -->
+<!-- ## Transparent and portable analyses -->
+<!-- While there is commercial software which can analyse respirometry data (e.g. AutoResp by Loligo), these are often poorly designed, complex, inefficient, and often prohibitively expensive and locked to single platforms, if not single computers. The main drawback of these is that they are not open-source, and so inherently prevent transparent analyses.  -->
+<!-- Alternatively, many investigators have their own analysis workflows in Excel and R. These are perfectly fine and work well on an individual basis or within a lab, but even if the spreadsheet or code is shared, their custom nature means that reproducibility is difficult for an independent user or may require a significant time commitment. `respR` seeks to solve these problems.  -->
+<!-- We have designed respR to avoid it being a "black box", into which data is fed and a result spit out with the user having little understanding or oversight into what is happening. We feel it important a user understands their data, which is why we include exploratory functions to visualise the data, look for common errors, and prepare it for analysis. We designed the functions to allow straightforward natural-language querying of different parts of the data in terms the user can understand, so they should always be aware of what they are doing. All the analytical functions also provide visualisations of the analysis and results. All output objects support the base R `plot()`, `print()` and `summary()` commands, which allow quick assessment of the most important outputs. As with all R packages and functions, the code underlying the analysis is easily viewable, so advanced users can investigate how it works for themselves.  -->
+<!-- ## Documenting reproducible workflows -->
+<!-- ### Simple sharing of scripts -->
+<!-- The easiest way of providing a reproducible workflow using `respR` is to include the raw data as a `.csv` or `.rda` file , and include a `.R` script containing all the code used to import and process that data file. Because `respR` has been designed as an end-to-end workflow covering every step in the analysis of respirometry data, code for all stages from raw data input, data preparation and exploration, determining rates, and converting the rates to specific units can be included in a single file, and usually this will comprise only a few lines of code. There may be additional data inputs (experiment specific parameters such as volumes, masses, temperatures, etc.). These can be entered as values in the code, but ideally would be included as an additional data file, and most R users should be familiar with how to format these in good database-style formatting, and how to reference the relevant entries in code.  -->
+<!-- To demonstrate how brief an entire end-to-end `respR` workflow can be, here's an example of a typical script which uses the `sardine.rd` dataset included in the package. We inspect the data, determine both the most linear rate, and the maximum rate over a 10 minute period, and finally convert rates to mass-specific units.  -->
+<!-- ```{r eval = T, results = "hide", fig.keep="none", message=FALSE, warning=FALSE, tidy=FALSE} -->
+<!-- ## Load the package -->
+<!-- library(respR) -->
+<!-- ## Import data -->
+<!-- ## Here we would typically use import_file() to import a data file,  -->
+<!-- ## but sardine.rd is already loaded -->
+<!-- ## Experiment parameters (typically this would be an existing  -->
+<!-- ## database-style object containing data for many experiments) -->
+<!-- exp_param <- data.frame(volume = 12.3, mass = 21.41, DO.unit = "mg/l", time.unit = "s") -->
+<!-- ## Inspect the data, and save it as an object -->
+<!-- exp_1 <- inspect(sardine.rd) -->
+<!-- ## Determine rates - most linear, and highest rate over 10 mins (600 rows) -->
+<!-- exp_1_linear_rate <- auto_rate(exp_1) -->
+<!-- exp_1_max_rate <- auto_rate(exp_1, method = "max", width = 600) -->
+<!-- ## Convert rates to mass-specific units using the experimental parameters -->
+<!-- exp_1_linear_rate_conv <- convert_rate(exp_1_linear_rate,  -->
+<!--                                        output.unit = "mg/h/kg", -->
+<!--                                        o2.unit = exp_param$DO.unit, -->
+<!--                                        time.unit = exp_param$time.unit, -->
+<!--                                        volume = exp_param$volume, -->
+<!--                                        mass = exp_param$mass) -->
+<!-- exp_1_max_rate_conv <- convert_rate(exp_1_max_rate,  -->
+<!--                                     output.unit = "mg/h/kg", -->
+<!--                                     o2.unit = exp_param$DO.unit, -->
+<!--                                     time.unit = exp_param$time.unit, -->
+<!--                                     volume = exp_param$volume, -->
+<!--                                     mass = exp_param$mass) -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- ## Results -->
+<!-- exp_1_linear_rate_conv -->
+<!-- exp_1_max_rate_conv -->
+<!-- ``` -->
+<!-- This shows how an entire analysis workflow can be conducted in only a few lines of code.  -->
+<!-- ### Saving single respR objects -->
+<!-- For more documented analyses, for documenting parts of a workflow, or for saving the outputs of specific functions, we can use the base R `saveRDS` function. The main functions in `respR` output R objects which include raw data, results and also metadata in the form of subsetting criteria, models and input parameters. Thus, each of these objects contains all the information saved from the previous function that created it, and so all the information required to continue through the `respR` workflow from any intermediate stage. These objects can be saved using `saveRDS` and distributed like any other file. This can allow each stage of the analysis to be saved, and shared or archived. An advantage of using one of these objects is that an analysis can be continued from a certain point without having to re-run the entire workflow. For example, data can be imported, inspected, a rate determined through the `auto_rate` function, and the resulting output object exported via `saveRDS`. This could be shared with a colleague who can then import it into their own R project using `readRDS`, and feed it into `convert_rate` to convert it to whatever units they wish without having to run any other parts of the workflow.   -->
+<!-- ```{r eval = FALSE} -->
+<!-- ## Running this code will show how saveRDS and readRDS preserves values  -->
+<!-- ## correctly, and gives the exact same results when used in further  -->
+<!-- ## stages of the workflow -->
+<!-- ## Inspect -->
+<!-- urch_data <- inspect(urchins.rd, time = 1, oxygen = 15) -->
+<!-- ## Export resulting object to working directory -->
+<!-- saveRDS(urch_data, file = "urch_data.rds") -->
+<!-- ## Re-import it to new object -->
+<!-- urch_data_in <- readRDS(file = "urch_data.rds") -->
+<!-- ## Check values are preserved - should be TRUE -->
+<!-- all.equal(urch_data, urch_data_in) -->
+<!-- ## Determine rate using original and imported objects -->
+<!-- urch_rate <- auto_rate(urch_data) -->
+<!-- urch_rate_in <- auto_rate(urch_data_in) -->
+<!-- ## Check results are the same - should be TRUE -->
+<!-- all.equal(urch_rate, urch_rate_in) -->
+<!-- ``` -->
+<!-- One example of using this method to document a reproducible workflow, would be to save the object created by `inpect_data` and include that along with the script for the rest of the analysis rather than including original data files. This object includes the raw data, but using it tells the next user the data has already been checked for common errors such as missing data, and if so these errors fixed, and so that step is unnecessary.  -->
+<!-- ### Saving all respR objects -->
+<!-- To document or archive an entire working environment we can use the `save.image()` command. This function saves to the working directory every object and value in the current R environment (though not scripts, i.e. `.R` files.). This way, all objects from the analysis of a single experiment, or multiple experiments, can be saved to a single file. -->
+<!-- ```{r eval = FALSE} -->
+<!-- ## Will save entire environment to current working directory -->
+<!-- save.image(file = "experiment_1.rda") -->
+<!-- ``` -->
+<!-- The environment can be reimported by double clicking on the file (usually RStudio will ask if you want to import it to the current project), or `load()` command.  -->
+<!-- ```{r eval = FALSE} -->
+<!-- ## Will load entire environment to current working project.  -->
+<!-- ## Path to the file must be specified, or it must be in -->
+<!-- ## current working directory. -->
+<!-- load(file = "experiment_1.rda") -->
+<!-- ``` -->
+<!-- This avoids having to save every object individually.  -->
+<!-- ## Conclusion -->
+<!-- We hope this brief vignette has helped you understand how `respR` may be used to produce open and reproducible science from your respirometry data. As scientists, we have probably all wished we could get the raw data from a publication, or struggled to extract data from old plots and tables. So we encourage you to use our package, and when you come to submit your paper consider including supplementary material as described above to allow others to scrutinise and reproduce your results, and in the future utilise your data for new analyses. This benefits the science community as a whole.  -->
+<!-- If you do use `respR` in your analyses, please do let us [know](mailto: nicholascarey@gmail.com). We would love to keep a running list of projects where `respR` has proven useful, and we would be happy to help promote and increase the visibility of your studies.  -->
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="two-point-analyses.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="respr-and-the-tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

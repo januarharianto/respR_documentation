@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Importing your data | respR – R Package Documentation</title>
+  <meta name="description" content="Documentation for the R package, respR." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Importing your data | respR – R Package Documentation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Documentation for the R package, respR." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Importing your data | respR – R Package Documentation" />
+  
+  <meta name="twitter:description" content="Documentation for the R package, respR." />
+  
+
+<meta name="author" content="Januar Harianto and Nicholas Carey" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="aquatic-respirometry.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">respR - Documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="why-use-respr.html"><a href="why-use-respr.html"><i class="fa fa-check"></i><b>2</b> Why use <code>respR</code>?</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-use-respr.html"><a href="why-use-respr.html#other-r-respirometry-packages"><i class="fa fa-check"></i><b>2.1</b> Other R respirometry packages</a></li>
+<li class="chapter" data-level="2.2" data-path="why-use-respr.html"><a href="why-use-respr.html#linear-detection"><i class="fa fa-check"></i><b>2.2</b> Linear detection</a></li>
+<li class="chapter" data-level="2.3" data-path="why-use-respr.html"><a href="why-use-respr.html#reproducibility"><i class="fa fa-check"></i><b>2.3</b> Reproducibility</a></li>
+<li class="chapter" data-level="2.4" data-path="why-use-respr.html"><a href="why-use-respr.html#using-other-similar-r-packages"><i class="fa fa-check"></i><b>2.4</b> Using other similar R packages</a></li>
+<li class="chapter" data-level="2.5" data-path="why-use-respr.html"><a href="why-use-respr.html#using-respr"><i class="fa fa-check"></i><b>2.5</b> Using <code>respR</code></a></li>
+</ul></li>
+<li class="part"><span><b>USAGE</b></span></li>
+<li class="chapter" data-level="3" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>3</b> Installation</a></li>
+<li class="chapter" data-level="4" data-path="quick-start.html"><a href="quick-start.html"><i class="fa fa-check"></i><b>4</b> Quick start</a><ul>
+<li class="chapter" data-level="4.1" data-path="quick-start.html"><a href="quick-start.html#example-data"><i class="fa fa-check"></i><b>4.1</b> Example data</a></li>
+<li class="chapter" data-level="4.2" data-path="quick-start.html"><a href="quick-start.html#demonstration"><i class="fa fa-check"></i><b>4.2</b> Demonstration</a></li>
+</ul></li>
+<li class="part"><span><b>METHODS</b></span></li>
+<li class="chapter" data-level="5" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html"><i class="fa fa-check"></i><b>5</b> Aquatic respirometry</a><ul>
+<li class="chapter" data-level="5.1" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#closed-chamber"><i class="fa fa-check"></i><b>5.1</b> Closed-chamber</a></li>
+<li class="chapter" data-level="5.2" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#intermittent"><i class="fa fa-check"></i><b>5.2</b> Intermittent</a></li>
+<li class="chapter" data-level="5.3" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#flow-through"><i class="fa fa-check"></i><b>5.3</b> Flow-through</a></li>
+<li class="chapter" data-level="5.4" data-path="aquatic-respirometry.html"><a href="aquatic-respirometry.html#open-tank"><i class="fa fa-check"></i><b>5.4</b> Open-tank</a></li>
+</ul></li>
+<li class="part"><span><b>EXAMPLES</b></span></li>
+<li class="chapter" data-level="6" data-path="importing-your-data.html"><a href="importing-your-data.html"><i class="fa fa-check"></i><b>6</b> Importing your data</a></li>
+<li class="part"><span><b>ARTICLES</b></span></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">respR – R Package Documentation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="importing-your-data" class="section level1">
+<h1><span class="header-section-number">6</span> Importing your data</h1>
+<p>Most systems allow data to be exported in easily readable formats (e.g. .csv, .txt) which contain the numeric time and O2 data <code>respR</code> requires. These files are usually easily imported into R using generic functions such as <code>read.csv()</code> and the relevant columns specified when used in <code>respR</code> functions, or extracted into separate data frames.</p>
+<p>Many systems however have raw output files with redundant information, or a structure that confuses importing functions. For example Loligo Systems AutoResp and Witrox files have several rows of metadata above the columns of raw data, which causes importing problems in <code>read.csv()</code>. These files can be altered in Excel or other spreadsheet software to fix these issues, however <code>respR</code> allows importing of many raw data files from various systems without modification.</p>
+<p>The <code>import_file()</code> function uses pattern recognititon to identify the originating system of the file. It also automatically recognises the format of any date-time data and uses it to create a new time-elapsed column, if one does not already exist.</p>
+<p>Here’s an example of importing a Witrox raw data file (from the current working directory, otherwise any external file can be specified with a filepath):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">import_file</span>(<span class="st">&quot;assets/Witrox_eg.txt&quot;</span>)</code></pre></div>
+<pre><code>## Loligo AutoResp/Witrox file detected</code></pre>
+<pre><code>##       Date_Time_DDMMYYYY_HHMMSS Time_stamp_code Barometric_pressure_hPa
+##    1:      5/11/2017 9:24:04 AM      3577364644                    1013
+##    2:      5/11/2017 9:24:05 AM      3577364645                    1013
+##    3:      5/11/2017 9:24:06 AM      3577364646                    1013
+##    4:      5/11/2017 9:24:07 AM      3577364647                    1013
+##    5:      5/11/2017 9:24:08 AM      3577364648                    1013
+##   ---                                                                  
+## 6812:     5/11/2017 11:17:35 AM      3577371455                    1013
+## 6813:     5/11/2017 11:17:36 AM      3577371456                    1013
+## 6814:     5/11/2017 11:17:37 AM      3577371457                    1013
+## 6815:     5/11/2017 11:17:38 AM      3577371458                    1013
+## 6816:     5/11/2017 11:17:39 AM      3577371459                    1013
+##       SDWA0003000060_CH_1_phase_rU SDWA0003000060_CH_1_temp_C
+##    1:                        29.58                      14.01
+##    2:                        29.58                      14.11
+##    3:                        29.57                      14.14
+##    4:                        29.59                      14.06
+##    5:                        29.58                      14.07
+##   ---                                                        
+## 6812:                        30.47                      13.58
+## 6813:                        30.49                      13.67
+## 6814:                        30.47                      13.47
+## 6815:                        30.49                      13.50
+## 6816:                        30.47                      13.53
+##       SDWA0003000060_CH_1_O2_mg/L
+##    1:                      10.056
+##    2:                      10.015
+##    3:                      10.012
+##    4:                      10.027
+##    5:                      10.032
+##   ---                            
+## 6812:                       9.454
+## 6813:                       9.403
+## 6814:                       9.497
+## 6815:                       9.469
+## 6816:                       9.474</code></pre>
+<p>As we can see, the function automatically recognises that this is a Witrox file, removes redundant information, and renames the relevant columns. It also uses the date-time columns to calculate a numeric time elapsed column (called <code>time</code> or <code>elapsed</code> depending on the original file).</p>
+<p>This function requires only a single input, the path to the file (one other option, <code>export = TRUE</code> allows exporting of the imported data to a .csv file). Everything else is handled automatically. This contrasts with other packages where numerous options such as the delimiter character, originating hardware, and specific date format must be specifed, which we have found leads to substantial usability issues (see <a href="https://januarharianto.github.io/respR/articles/packages_comp.html">A comparison of respR with other R packages</a>).</p>
+<p>After importing and saving to an object, this can be passed to the rest of the <code>respR</code> functions for processing, all while leaving the raw data file unmodified.</p>
+<p>This function supports several systems at present (Firesting | Pyro | PRESENS OXY10 | PRESENS (generic) | MiniDOT | Loligo Witrox). However, it is still in development; some files may fail to import because of structural or version differences we have not encountered. We would encourage users to <a href="https://github.com/januarharianto/respr/issues">send us sample files for testing</a>, especially any they have problems with, or from systems we do not yet support.</p>
+
+</div>
+
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="aquatic-respirometry.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["respR_documentation.pdf", "respR_documentation.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
