@@ -11,7 +11,8 @@ install.packages("devtools")
 devtools::install_github("januarharianto/respR")
 ```
 
-The developmental version is mostly stable, and contains some features that are undergoing peer-review. You may install this version using the code:
+The developmental version is also available, and contains some features that are undergoing peer-review. 
+Please understand that the developmental version may break from time to time. You may install this version using the code:
 
 ```{r eval=FALSE}
 # install dev version
@@ -24,4 +25,5 @@ Once `respR` has been installed, load the package into your workspace:
 library(respR)
 ```
 
-Check out our [Quick start][quick start] guide if you are using `respR` for the first time. The [Getting started][getting started] vignette provides a detailed introduction to respirometry and information about other vignettes in this document.
+<!-- Check out our [Quick start][quick start] guide if you are using `respR` for the first time. -->
+The [Getting started][Getting started] vignette provides a detailed introduction to respirometry and information about other vignettes in this document.
